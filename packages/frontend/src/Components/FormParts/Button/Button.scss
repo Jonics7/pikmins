@@ -1,0 +1,20 @@
+@import '../../../styles.scss';
+
+.Button {
+    height: vw(80);
+    width: max-content;
+    padding: 1.458vw 2.708vw;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+    background: linear-gradient(90deg, #0044F5 0%, #3487F7 100%);
+
+    &-text {
+        color: #F4F7FA;
+        font-weight: 500;
+        font-size: 1.302vw;
+    }
+}

@@ -1,0 +1,22 @@
+.Input {
+    background: #F4F7FA;
+    border-radius: 10px;
+    height: 4.167vw;
+
+    border: none;
+
+    padding: 1.458vw 1.510vw;
+
+    color: #89B5F7;
+    font-size: 1.042vw;
+    font-weight: 500;
+
+    &::placeholder {
+        color: #89B5F7;
+    }
+    
+    &:focus {
+        border: none;
+        outline: none;
+    }
+}

@@ -1,0 +1,45 @@
+.Auth {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+
+    width: 25vw;
+    height: auto;
+
+    padding: 2.917vw 3.125vw;
+
+    background: rgba(216, 230, 252, 0.8);
+
+    box-shadow: 15px 15px 40px -10px rgba(0, 0, 0, 0.2), inset -7px 0px 4px rgba(255, 255, 255, 0.4), inset 7px -10px 4px rgba(255, 255, 255, 0.4), inset -2px 0px 10px rgba(0, 0, 0, 0.2), inset 1px 3px 10px rgba(0, 0, 0, 0.2);
+
+    border-radius: 15px;
+    backdrop-filter: blur(40px);
+
+    &-title {
+        font-size: 1.302vw;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 2.083vw;
+    }
+
+    >.Input {
+        margin-bottom: 1.563vw;
+
+        &:last-child {
+            margin-bottom: 1.042vw;
+        }
+    }
+
+    &-register {
+        color: #3386F7;
+        font-size: 0.938vw;
+        cursor: pointer;
+        width: max-content;
+
+        margin: 0 auto 1.042vw auto;
+    }
+
+    .Button {
+        margin: 0 auto;
+    }
+}
