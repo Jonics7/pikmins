@@ -2,7 +2,7 @@
 
 .Header {
     position: fixed;
-    padding: 3.125vw 3.646vw;
+    padding: vw(58) vw(70) 0 vw(70);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,5 +20,12 @@
         width: auto;
         height: vw(54);
         cursor: pointer;
+
+        &-holder {
+            width: vw(79);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 }

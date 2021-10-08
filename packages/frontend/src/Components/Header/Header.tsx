@@ -14,7 +14,11 @@ const Header: React.FC<HeaderProps> = ({ isLoggined }) => {
     return (
         <div className="Header">
             <Logo className="Header-logo" />
-            {isLoggined ? <User className="Header-user" onClick={ctx.openProfile} /> : null}
+            {isLoggined ? (
+                <div className="Header-user-holder">
+                    <User className="Header-user" onClick={ctx.openProfile} />
+                </div>
+            ) : null}
         </div>
     );
 };

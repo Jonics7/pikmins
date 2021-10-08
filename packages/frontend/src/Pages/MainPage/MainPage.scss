@@ -21,6 +21,7 @@
 
     &-helper {
         height: vw(76);
+        width: vw(79);
 
         display: flex;
         align-items: center;
@@ -28,6 +29,11 @@
 
         background: #fff;
         border-radius: 10px;
+
+        >svg {
+            width: vw(67);
+            height: auto;
+        }
     }
 
     .DirectionFilter {
