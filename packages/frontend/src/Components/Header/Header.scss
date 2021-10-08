@@ -1,16 +1,24 @@
+@import '../../styles.scss';
+
 .Header {
+    position: fixed;
     padding: 3.125vw 3.646vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+    width: 100%;
+
+    z-index: 999;
+
     &-logo {
-        width: 8.021vw;
-        height: auto;
+        width: auto;
+        height: vw(53);
     }
 
     &-user {
-        width: vw(48);
-        height: auto;
+        width: auto;
+        height: vw(54);
+        cursor: pointer;
     }
 }

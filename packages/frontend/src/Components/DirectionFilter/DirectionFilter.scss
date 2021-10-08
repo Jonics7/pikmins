@@ -1,0 +1,37 @@
+@import '../../styles.scss';
+
+.DirectionFilter {
+    height: vw(78);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #fff;
+
+    padding: vw(28) vw(42) vw(24) vw(42);
+
+    transition: background .25s ease-in-out 0s;
+
+    cursor: pointer;
+
+    &-text {
+        color: #89B5F7;
+        width: max-content;
+
+        font-size: vw(20);
+        font-weight: 500;
+
+        transition: color .25s ease-in-out 0s;
+
+        user-select: none;
+    }
+
+    &.clicked {
+        background: #89B5F7;
+
+        .DirectionFilter-text {
+            color: #fff;
+        }
+    }
+}
