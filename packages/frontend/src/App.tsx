@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import './App.scss';
-import Common from './Components/Common/Common';
 import Header from './Components/Header/Header';
 import MainPage from './Pages/MainPage/MainPage';
 import StartPage from './Pages/StartPage/StartPage';
