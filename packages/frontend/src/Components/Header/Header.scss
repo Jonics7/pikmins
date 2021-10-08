@@ -1,8 +1,16 @@
 .Header {
     padding: 3.125vw 3.646vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    svg {
+    &-logo {
         width: 8.021vw;
+        height: auto;
+    }
+
+    &-user {
+        width: vw(48);
         height: auto;
     }
 }

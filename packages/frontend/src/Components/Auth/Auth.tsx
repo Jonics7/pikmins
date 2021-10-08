@@ -3,16 +3,22 @@ import './Auth.scss';
 import Login from './Login/Login';
 import Register from './Register/Register';
 
-const Auth: React.FC = () => {
+interface AuthProps {
+    onLogin: (id: string) => void;
+}
+
+const Auth: React.FC<AuthProps> = ({ onLogin }) => {
     const [isLogin, setIsLogin] = useState<boolean>(true);
 
-    const login = () => {};
+    const login = (id: string) => {
+        onLogin(id);
+    };
     const register = () => {};
 
     return (
         <div className="Auth">
             {isLogin ? (
-                <Login switchCallback={() => setIsLogin(!isLogin)} login={login} />
+                <Login switchCallback={() => setIsLogin(!isLogin)} login={() => login('id')} />
             ) : (
                 <Register switchCallback={() => setIsLogin(!isLogin)} register={register} />
             )}
