@@ -8,13 +8,16 @@ import { ReactComponent as Doc } from '../../Assets/Icons/document.svg';
 import { ReactComponent as Arrow } from '../../Assets/Icons/arrow.svg';
 import data from '../../Data/Datasets.json';
 import { Dataset } from 'common';
+import { useHistory } from 'react-router';
+import QueryString from 'qs';
 
 const MainPage: React.FC = () => {
     const [selectedFilters, setSelectedFilters] = useState<Array<number>>([0]);
-    const [helperIsExpanded, setHelperIsExpanded] = useState<boolean>(false);
     const [selectedDatasets, setSelectedDatasets] = useState<Array<string>>([]);
     const [showPopup, setShowPopup] = useState<boolean>(false);
     const [datasets] = useState<Array<Dataset>>(data as Array<Dataset>);
+
+    const history = useHistory();
 
     const handleFilter = (id: number) => {
         if (selectedFilters.includes(id)) {
@@ -29,7 +32,7 @@ const MainPage: React.FC = () => {
 
     const handleHelper = () => {
         if (selectedDatasets.length !== 0) {
-            setHelperIsExpanded(!helperIsExpanded);
+            history.push(`/merging/${getQueryParams()}`);
         } else {
             setShowPopup(!showPopup);
         }
@@ -55,6 +58,10 @@ const MainPage: React.FC = () => {
         }
     };
 
+    const getQueryParams = (): string => {
+        return QueryString.stringify(selectedDatasets);
+    };
+
     return (
         <div className="MainPage">
             <div className="MainPage-header">
@@ -68,7 +75,7 @@ const MainPage: React.FC = () => {
                         />
                     ))}
                 </div>
-                <Helper isExpanded={helperIsExpanded} handleHelper={handleHelper} />
+                <Helper isExpanded={selectedDatasets.length !== 0} handleHelper={handleHelper} />
             </div>
             <div className="MainPage-layout">
                 {getSlicedArray(datasets).map((rows, idx) => (
