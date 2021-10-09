@@ -6,7 +6,7 @@ import Tag from '../Tag/Tag';
 import './MergingDataset.scss';
 
 export interface MergingDatasetProps {
-    onFieldClick: (fieldData: FieldType) => void;
+    onFieldClick: (dataset: Dataset, fieldData: FieldType) => void;
     selectedFields: Array<FieldType>;
     dataset: Dataset;
 }
@@ -27,7 +27,7 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedF
                     {dataset.fields.map((field, index) => (
                         <DatasetField
                             onClick={() =>
-                                onFieldClick({
+                                onFieldClick(dataset, {
                                     id: field.id,
                                     description: field.description,
                                     type: field.type,

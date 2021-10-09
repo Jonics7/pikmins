@@ -1,8 +1,8 @@
 @import '../../styles.scss';
 
 .DatasetField {
-    width: vw(120);
-    height: vw(95);
+    min-width: vw(120);
+    min-height: vw(95);
 
     margin-right: vw(75);
 
@@ -20,6 +20,11 @@
     cursor: pointer;
 
     transition: background 0.25s ease-in-out 0s, color 0.25s ease-in-out 0s;
+
+    &.inactive {
+        background: #fff;
+        color: #89B5F7;
+    }
 
     &:last-child {
         margin-right: 0;

@@ -7,6 +7,7 @@ export interface Field {
 }
 
 export interface Dataset {
+    urn: string;
     title: string;
     tags?: string[];
     price?: number;

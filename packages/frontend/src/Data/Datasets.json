@@ -1,5 +1,6 @@
 [
     {
+        "urn": "dataset_1_123",
         "title": "Dataset 1",
         "tags": ["tag1", "tag2"],
         "price": 50,
@@ -19,10 +20,26 @@
                 "id": "Address",
                 "type": "string",
                 "description": "description"
+            },
+            {
+                "id": "Address",
+                "type": "string",
+                "description": "description"
+            },
+            {
+                "id": "Address",
+                "type": "string",
+                "description": "description"
+            },
+            {
+                "id": "Address",
+                "type": "string",
+                "description": "description"
             }
         ]
     },
     {
+        "urn": "dataset_2_1234",
         "title": "Dataset 2",
         "tags": ["tag1", "tag2"],
         "price": 100,
@@ -41,6 +58,7 @@
         ]
     },
     {
+        "urn": "dataset_2_12345",
         "title": "Dataset 3",
         "tags": ["tag1", "tag2"],
         "price": 150,

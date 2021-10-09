@@ -9,8 +9,6 @@ import Helper from '../../Components/Helper/Helper';
 import datasets from '../../Data/Datasets.json';
 import { Dataset } from 'common';
 
-const data = datasets as Dataset[];
-
 const DropdownItems = ['One To One', 'Many To Many'] as const;
 export type DropdownItemsType = typeof DropdownItems[number];
 
@@ -26,26 +24,12 @@ const emptyField: FieldType = {
 };
 
 const MergingPage: React.FC = () => {
+    const [data] = useState<Array<Dataset>>(datasets as Dataset[]);
+    const [selectedDataset, setSelectedDataset] = useState<Dataset>();
     const [fields, setFields] = useState<Array<FieldType>>([emptyField, emptyField]);
     const [result, setResult] = useState<string>('Financial Advisors Combination');
 
-    const handeFields = (field: FieldType) => {
-        // if (fields[0].datasetId === field.datasetId) {
-        //     if (fields[0].fieldId === field.fieldId) {
-        //         setFields([emptyField, fields[1]]);
-        //     } else {
-        //         setFields([field, fields[1]]);
-        //     }
-        // } else if (fields[1].datasetId === field.datasetId) {
-        //     if (fields[1].fieldId === field.fieldId) {
-        //         setFields([fields[0], emptyField]);
-        //     } else {
-        //         setFields([fields[0], field]);
-        //     }
-        // } else {
-        //     setFields([field, ...fields]);
-        // }
-    };
+    const handeFields = (dataset: Dataset, field: FieldType) => {};
 
     const onSubmit = () => {
         // if (fields.every((field) => field.datasetId !== -1)) {
@@ -73,7 +57,7 @@ const MergingPage: React.FC = () => {
                         <MergingDataset
                             dataset={dataset}
                             selectedFields={fields}
-                            onFieldClick={(field: FieldType) => handeFields(field)}
+                            onFieldClick={(dataset: Dataset, field: FieldType) => handeFields(dataset, field)}
                             key={index}
                         />
                     ))}
