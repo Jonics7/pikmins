@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router';
+import { Route, Switch, useHistory } from 'react-router';
 import './App.scss';
 import Header from './Components/Header/Header';
 import MainPage from './Pages/MainPage/MainPage';
+import MergingPage from './Pages/MergingPage/MergingPage';
 import StartPage from './Pages/StartPage/StartPage';
 import { UserContext, UserContextType } from './userContext';
 
@@ -24,7 +25,12 @@ const App: React.FC = () => {
                 style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/Images/Background.png)` }}
             >
                 <Header isLoggined={isLoggined} />
-                {isLoggined ? <MainPage /> : <StartPage onLogin={(id: string) => setUserId(id)} />}
+                <Switch>
+                    <Route path="/" exact>
+                        {isLoggined ? <MainPage /> : <StartPage onLogin={(id: string) => setUserId(id)} />}
+                    </Route>
+                    <Route path="/merging" exact component={MergingPage} />
+                </Switch>
             </div>
         </UserContext.Provider>
     );

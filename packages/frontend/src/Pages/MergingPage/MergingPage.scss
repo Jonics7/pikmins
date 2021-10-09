@@ -1,0 +1,60 @@
+@import '../../styles.scss';
+
+.MergingPage {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+
+    background: #f4f7fa;
+    padding: vw(150) vw(70);
+
+    display: flex;
+    flex-direction: column;
+
+    &-layout {
+        width: 100%;
+        height: vw(574);
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-datasets {
+        height: 100%;
+        width: calc(100% - #{vw(600)});
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-controls {
+        height: 100%;
+        width: vw(580);
+        background: #fff;
+        border-radius: 10px;
+
+        padding: vw(70) vw(100) vw(57) vw(100);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &-field {
+            height: vw(50);
+            background: #F4F7FA;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &-text {
+                font-size: vw(18);
+                line-height: vw(24);
+                color: #010101;
+
+                width: max-content;
+            }
+        }
+    }
+}
