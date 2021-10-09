@@ -25,9 +25,10 @@ const emptyField: FieldType = {
 
 const MergingPage: React.FC = () => {
     const [data] = useState<Array<Dataset>>(datasets as Dataset[]);
-    const [selectedDataset, setSelectedDataset] = useState<Dataset>();
     const [fields, setFields] = useState<Array<FieldType>>([emptyField, emptyField]);
     const [result, setResult] = useState<string>('Financial Advisors Combination');
+
+    const [expandedDataset, setExpandedDataset] = useState<string>('');
 
     const handeFields = (dataset: Dataset, field: FieldType) => {};
 
@@ -59,6 +60,8 @@ const MergingPage: React.FC = () => {
                             selectedFields={fields}
                             onFieldClick={(dataset: Dataset, field: FieldType) => handeFields(dataset, field)}
                             key={index}
+                            expanded={dataset.urn === expandedDataset}
+                            expand={() => setExpandedDataset(dataset.urn === expandedDataset ? '' : dataset.urn)}
                         />
                     ))}
                 </div>

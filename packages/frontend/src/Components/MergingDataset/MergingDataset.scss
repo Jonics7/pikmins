@@ -1,23 +1,67 @@
 @import '../../styles.scss';
 
 .MergingDataset {
+    position: relative;
+
     background: #fff;
     border-radius: 10px;
 
     width: 100%;
-    height: vw(176);
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    min-height: vw(176);
 
     padding: vw(40);
     padding-right: vw(80);
 
     margin-bottom: vw(25);
 
+    display: flex;
+
     &:last-child {
         margin-bottom: 0;
+    }
+
+    &-collapsed {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100%;
+    }
+
+    &-expanded {
+        display: flex;
+        flex-direction: column;
+
+        .MergingDataset {
+            &-info {
+                width: 100%;
+
+                flex-direction: row;
+            }
+        }
+    }
+
+    &-arrow {
+        width: vw(20);
+        height: auto;
+
+        cursor: pointer;
+
+        position: absolute;
+        top: vw(82);
+        right: vw(30);
+
+        transform: rotateZ(0deg);
+        transition: transform 0.15s ease-in-out 0s;
+
+        * {
+            fill: #89B5F7;
+        }
+
+        &.rotate {
+            transform: rotateZ(180deg);
+        }
     }
 
     &-info {
@@ -29,7 +73,7 @@
 
     &-title {
         margin-bottom: vw(26);
-        font-weight: 500;
+        font-weight: 600;
         font-size: vw(18);
         line-height: vw(24);
 
@@ -45,7 +89,6 @@
 
         display: flex;
         flex-direction: row;
-        // justify-content: space-between;
 
         overflow-x: auto;
 

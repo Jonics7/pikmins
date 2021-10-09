@@ -4,7 +4,9 @@
     min-width: vw(120);
     min-height: vw(95);
 
-    margin-right: vw(75);
+    margin-right: vw(70);
+
+    border-radius: 10px;
 
     display: flex;
     flex-direction: column;
@@ -14,8 +16,8 @@
 
     border-radius: 10px;
 
-    background: #fff;
-    color: #89B5F7;
+    background: #F4F7FA;
+    color: #000;
 
     cursor: pointer;
 
@@ -33,7 +35,7 @@
     &-name {
         font-size: vw(18);
         line-height: vw(24);
-        font-weight: 500;
+        font-weight: 700;
 
         margin-bottom: vw(13);
 
@@ -43,7 +45,7 @@
     &-value {
         font-size: vw(14);
         line-height: vw(24);
-        font-weight: vw(300);
+        font-weight: 700;
 
         user-select: none;
     }
