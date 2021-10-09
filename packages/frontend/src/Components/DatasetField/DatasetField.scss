@@ -1,0 +1,44 @@
+@import '../../styles.scss';
+
+.DatasetField {
+    width: vw(120);
+    height: vw(95);
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+
+    background: #fff;
+    color: #89B5F7;
+
+    cursor: pointer;
+
+    transition: background 0.25s ease-in-out 0s, color 0.25s ease-in-out 0s;
+
+    &-name {
+        font-size: vw(18);
+        line-height: vw(24);
+        font-weight: 500;
+
+        margin-bottom: vw(13);
+
+        user-select: none;
+    }
+
+    &-value {
+        font-size: vw(14);
+        line-height: vw(24);
+        font-weight: vw(300);
+
+        user-select: none;
+    }
+
+    &.selected {
+        background: #89B5F7;
+        color: #fff;
+    }
+}

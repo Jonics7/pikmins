@@ -1,2 +1,79 @@
+@import '../../styles.scss';
+
 .MergingDataset {
+    background: #fff;
+    border-radius: 10px;
+
+    width: 100%;
+    height: vw(176);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: vw(40);
+    padding-right: vw(80);
+
+    margin-bottom: vw(25);
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &-info {
+        display: flex;
+        flex-direction: column;
+
+        width: vw(380);
+    }
+
+    &-title {
+        margin-bottom: vw(26);
+        font-weight: 500;
+        font-size: vw(18);
+        line-height: vw(24);
+
+        user-select: none;
+    }
+
+    &-tags {
+        display: flex;
+    }
+
+    &-fields {
+        width: 100%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        
+        &-holder {
+            width: vw(510);
+        }
+    }
+
+    &-price {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        color: #000;
+
+        &-value {
+            font-size: vw(18);
+            font-weight: 700;
+            line-height: vw(24);
+            margin-bottom: vw(20);
+
+            user-select: none;
+        }
+    }
+
+    &-rows {
+        font-size: vw(14);
+        line-height: vw(24);
+        font-weight: 300;
+
+        user-select: none;
+    }
 }
