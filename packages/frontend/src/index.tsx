@@ -4,14 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { ReactKeycloakProvider } from '@react-keycloak/web';
+import keycloak from './keycloak';
 
 const supportsHistory = 'pushState' in window.history;
 
 ReactDOM.render(
     <React.StrictMode>
-        <BrowserRouter forceRefresh={supportsHistory}>
-            <App />
-        </BrowserRouter>
+        <ReactKeycloakProvider authClient={keycloak} initOptions={{ onLoad: 'login-required' }}>
+            <BrowserRouter forceRefresh={supportsHistory}>
+                <App />
+            </BrowserRouter>
+        </ReactKeycloakProvider>
     </React.StrictMode>,
     document.getElementById('root'),
 );
