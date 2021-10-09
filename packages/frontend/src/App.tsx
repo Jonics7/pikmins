@@ -1,3 +1,4 @@
+import { useKeycloak } from '@react-keycloak/web';
 import React, { useState } from 'react';
 import { Route, Switch, useHistory } from 'react-router';
 import './App.scss';
@@ -17,6 +18,10 @@ const App: React.FC = () => {
         userId: userId,
         openProfile: () => history.push(userId),
     };
+
+    const { keycloak } = useKeycloak();
+
+    console.log((keycloak.idTokenParsed as any)?.preferred_username);
 
     return (
         <UserContext.Provider value={contextValue}>
