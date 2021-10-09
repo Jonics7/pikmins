@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import './MainPage.scss';
 import filters from '../../Data/DirectionFilters.json';
 import DirectionFilter from '../../Components/DirectionFilter/DirectionFilter';
-import { default as Helper } from '../../Components/MainHelper/MainHelper';
+import Helper from '../../Components/Helper/Helper';
 
 const MainPage: React.FC = () => {
     const [selectedFilters, setSelectedFilters] = useState<Array<number>>([0]);
+    const [helperIsExpanded, setHelperIsExpanded] = useState<boolean>(false);
+    const [selectedDatasets, setSelectedDatasets] = useState<Array<number>>([0]);
 
     const handleFilter = (id: number) => {
         if (selectedFilters.includes(id)) {
@@ -15,6 +17,13 @@ const MainPage: React.FC = () => {
             setSelectedFilters(newArray);
         } else {
             setSelectedFilters([...selectedFilters, id]);
+        }
+    };
+
+    const handleHelper = () => {
+        console.log('1');
+        if (selectedDatasets.length !== 0) {
+            setHelperIsExpanded(!helperIsExpanded);
         }
     };
 
@@ -31,9 +40,7 @@ const MainPage: React.FC = () => {
                         />
                     ))}
                 </div>
-                <div className="MainPage-helper">
-                    <Helper />
-                </div>
+                <Helper isExpanded={helperIsExpanded} handleHelper={handleHelper} />
             </div>
         </div>
     );

@@ -1,0 +1,32 @@
+@import '../../styles.scss';
+
+.Helper {
+    height: vw(76);
+    min-width: vw(79);
+    width: max-content;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    >svg {
+        width: vw(67);
+        height: auto;
+    }
+
+    &-text {
+        color: #fff;
+        font-size: vw(25);
+        margin-right: vw(44);
+        margin-left: vw(14);
+    }
+
+    &.expanded {
+        background: #89B5F7;
+    }
+}

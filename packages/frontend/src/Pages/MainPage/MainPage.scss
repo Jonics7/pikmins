@@ -19,23 +19,6 @@
         display: flex;
     }
 
-    &-helper {
-        height: vw(76);
-        width: vw(79);
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        background: #fff;
-        border-radius: 10px;
-
-        > svg {
-            width: vw(53);
-            height: auto;
-        }
-    }
-
     .DirectionFilter {
         margin-right: vw(20);
 
