@@ -10,6 +10,10 @@
 
     padding: vw(40);
 
+    &.big {
+        padding-right: vw(80);
+    }
+
     &-icon {
         width: vw(100);
         height: vw(100);
@@ -22,6 +26,24 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+        height: 100%;
+        padding: vw(12.5) 0;
+
+        &-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+
+            > .DatasetItem-info-title {
+                margin-bottom: 0;
+                margin-right: vw(18);
+            }
+
+            > .DatasetItem-info-price {
+                margin-right: 0;
+            }
+        }
 
         &-title {
             font-size: vw(18);
@@ -34,7 +56,7 @@
             font-size: vw(18);
 
             margin-right: vw(20);
-        
+
             &-holder {
                 display: flex;
                 align-items: center;
@@ -43,7 +65,14 @@
         }
 
         &-rows {
+            font-size: vw(14);
             font-weight: 300;
+        }
+
+        &-tags {
+            display: flex;
+            align-items: center;
+            margin-right: vw(40);
         }
     }
 }
