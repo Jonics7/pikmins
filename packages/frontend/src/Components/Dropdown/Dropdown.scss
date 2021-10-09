@@ -1,0 +1,31 @@
+@import '../../styles.scss';
+
+.Dropdown {
+    &-selected {
+        padding: vw(13) vw(46);
+        display: flex;
+        align-items: center;
+        border-radius: 10px;
+        background: #89B5F7;
+
+        cursor: pointer;
+
+        &-text {
+            font-weight: 700;
+            color: #fff;
+            font-size: vw(18);
+            line-height: vw(24);
+
+            margin-right: vw(20);
+        }
+    }
+    
+    &-arrow {
+        height: vw(12);
+        width: auto;
+    }
+
+    &-items {
+        
+    }
+}
