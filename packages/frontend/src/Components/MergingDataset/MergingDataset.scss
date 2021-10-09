@@ -32,12 +32,33 @@
     &-expanded {
         display: flex;
         flex-direction: column;
+        flex: 1 1 auto;
 
         .MergingDataset {
+            &-title {
+                margin-top: vw(6);
+                margin-bottom: 0;
+                width: vw(240);
+                margin-right: vw(20);
+            }
             &-info {
                 width: 100%;
 
                 flex-direction: row;
+            }
+            &-price {
+                margin-left: auto;
+                &-value {
+                    margin-bottom: 0;
+                }
+            }
+            &-add-filter {
+                margin-top: vw(26);
+                height: vw(40);
+                border-radius: vw(10);
+                background-color: #89b5f7;
+                font-size: vw(18);
+                color: #ffffff;
             }
         }
     }
@@ -56,7 +77,7 @@
         transition: transform 0.15s ease-in-out 0s;
 
         * {
-            fill: #89B5F7;
+            fill: #89b5f7;
         }
 
         &.rotate {
@@ -72,6 +93,7 @@
     }
 
     &-title {
+        margin-top: vw(6);
         margin-bottom: vw(26);
         font-weight: 600;
         font-size: vw(18);
@@ -95,16 +117,17 @@
         &::-webkit-scrollbar {
             display: none;
         }
-        
+
         &-holder {
-            width: vw(510);
+            width: vw(480);
             overflow: hidden;
         }
     }
 
     &-price {
+        margin-top: vw(6);
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         flex-direction: column;
 
         color: #000;

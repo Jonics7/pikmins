@@ -31,13 +31,7 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedF
                         <div className="MergingDataset-fields">
                             {dataset.fields.map((field, index) => (
                                 <DatasetField
-                                    onClick={() =>
-                                        onFieldClick(dataset, {
-                                            id: field.id,
-                                            description: field.description,
-                                            type: field.type,
-                                        })
-                                    }
+                                    onClick={() => onFieldClick(dataset, field)}
                                     selected={selectedFields.every((fieldData) => field.id === fieldData.id)}
                                     name={field.id}
                                     value={field.description ?? ''}
@@ -64,7 +58,13 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedF
                                 <Tag color="#E18080" text={tag} key={idx} />
                             ))}
                         </div>
+                        <div className="MergingDataset-price">
+                            {dataset.price !== null && dataset.price !== undefined ? (
+                                <div className="MergingDataset-price-value">${dataset.price}.00</div>
+                            ) : null}
+                        </div>
                     </div>
+                    <button className="MergingDataset-add-filter">Добавить фильтры</button>
                 </div>
             )}
 
