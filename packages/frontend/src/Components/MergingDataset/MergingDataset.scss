@@ -45,10 +45,17 @@
 
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        // justify-content: space-between;
+
+        overflow-x: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
         
         &-holder {
             width: vw(510);
+            overflow: hidden;
         }
     }
 

@@ -6,11 +6,12 @@ interface DatasetFieldProps {
     name: string;
     value: string;
     onClick: () => void;
+    inactive?: boolean;
 }
 
-const DatasetField: React.FC<DatasetFieldProps> = ({ selected, name, value, onClick }) => {
+const DatasetField: React.FC<DatasetFieldProps> = ({ selected, name, value, onClick, inactive }) => {
     return (
-        <div className={`DatasetField${selected ? ' selected' : ''}`} onClick={onClick}>
+        <div className={`DatasetField${selected ? ' selected' : ''}${inactive ? ' inactive' : ''}`} onClick={onClick}>
             <div className="DatasetField-name">{name}</div>
             <div className="DatasetField-value">{value}</div>
         </div>
