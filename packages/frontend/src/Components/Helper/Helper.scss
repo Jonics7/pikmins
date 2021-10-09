@@ -14,19 +14,23 @@
 
     cursor: pointer;
 
-    >svg {
-        width: vw(67);
+    padding: 0 vw(16);
+    transition: padding ease 0.25s;
+
+    > svg {
+        width: vw(47);
         height: auto;
     }
 
     &-text {
         color: #fff;
         font-size: vw(25);
-        margin-right: vw(44);
+        margin-right: vw(17);
         margin-left: vw(14);
     }
 
     &.expanded {
-        background: #89B5F7;
+        background: #89b5f7;
+        padding: 0 vw(27);
     }
 }
