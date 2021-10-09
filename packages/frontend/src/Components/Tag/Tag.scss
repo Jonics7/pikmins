@@ -1,0 +1,24 @@
+@import '../../styles.scss';
+
+.Tag {
+    display: flex;
+    background-color: #f4f7fa;
+    border-radius: vw(10);
+    padding: vw(8) vw(16);
+
+    & + & {
+        margin-left: vw(20);
+    }
+
+    &-text {
+        font-weight: 300;
+        font-size: vw(14);
+    }
+
+    &-circle {
+        height: vw(15);
+        width: vw(15);
+        margin-right: vw(12);
+        border-radius: 50%;
+    }
+}

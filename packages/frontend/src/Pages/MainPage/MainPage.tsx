@@ -50,7 +50,7 @@ const MainPage: React.FC = () => {
                 <Helper isExpanded={helperIsExpanded} handleHelper={handleHelper} />
             </div>
             <div className="MainPage-layout">
-                <DatasetItem small title="Accountants, San Diego (CA)" price={49.0} rows={512} />
+                <DatasetItem small={false} title="Accountants, San Diego (CA)" price={49.0} rows={512} />
             </div>
 
             <div className={`MainPage-helper-popup${showPopup ? ' show' : ''}`}>
