@@ -4,11 +4,14 @@ import filters from '../../Data/DirectionFilters.json';
 import DirectionFilter from '../../Components/DirectionFilter/DirectionFilter';
 import Helper from '../../Components/Helper/Helper';
 import DatasetItem from '../../Components/DatasetItem/DatasetItem';
+import { ReactComponent as Doc } from '../../Assets/Icons/document.svg';
+import { ReactComponent as Arrow } from '../../Assets/Icons/arrow.svg';
 
 const MainPage: React.FC = () => {
     const [selectedFilters, setSelectedFilters] = useState<Array<number>>([0]);
     const [helperIsExpanded, setHelperIsExpanded] = useState<boolean>(false);
-    const [selectedDatasets, setSelectedDatasets] = useState<Array<number>>([0]);
+    const [selectedDatasets, setSelectedDatasets] = useState<Array<number>>([]);
+    const [showPopup, setShowPopup] = useState<boolean>(false);
 
     const handleFilter = (id: number) => {
         if (selectedFilters.includes(id)) {
@@ -22,9 +25,12 @@ const MainPage: React.FC = () => {
     };
 
     const handleHelper = () => {
-        console.log('1');
         if (selectedDatasets.length !== 0) {
             setHelperIsExpanded(!helperIsExpanded);
+        } else {
+            console.log('a');
+
+            setShowPopup(!showPopup);
         }
     };
 
@@ -45,6 +51,17 @@ const MainPage: React.FC = () => {
             </div>
             <div className="MainPage-layout">
                 <DatasetItem small title="Accountants, San Diego (CA)" price={49.0} rows={512} />
+            </div>
+
+            <div className={`MainPage-helper-popup${showPopup ? ' show' : ''}`}>
+                <div className="MainPage-helper-popup-description">
+                    Для того чтобы начать работу с Датасетом или несколькими, выберите их и перейдите в рабочу область.{' '}
+                </div>
+                <div className="MainPage-helper-popup-icons">
+                    <Doc className="MainPage-helper-popup-icons-doc" />
+                    <Arrow className="MainPage-helper-popup-icons-arrow" />
+                    <Doc className="MainPage-helper-popup-icons-doc" />
+                </div>
             </div>
         </div>
     );
