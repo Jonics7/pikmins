@@ -181,6 +181,9 @@
             font-weight: 700;
             padding: vw(12) vw(58);
             margin-top: vw(20);
+
+            user-select: none;
+            cursor: pointer;
         }
     }
 }

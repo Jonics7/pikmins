@@ -47,7 +47,11 @@ const MergingPage: React.FC = () => {
         }
     };
 
-    const onSubmit = () => {};
+    const onSubmit = () => {
+        if (fields.every((field) => field.datasetId !== -1)) {
+            //TODO: do something
+        }
+    };
 
     return (
         <div className="MergingPage">
