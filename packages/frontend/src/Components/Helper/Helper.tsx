@@ -1,6 +1,6 @@
 import React from 'react';
 import './Helper.scss';
-import { ReactComponent as HelperIcon } from '../../Assets/Icons/helper.svg';
+import HelperIcon from '../HelperIcon/HelperIcon';
 
 interface HelperProps {
     isExpanded: boolean;
@@ -10,7 +10,7 @@ interface HelperProps {
 const Helper: React.FC<HelperProps> = ({ isExpanded, handleHelper }) => {
     return (
         <div onClick={handleHelper} className={`Helper${isExpanded ? ' expanded' : ''}`}>
-            <HelperIcon />
+            <HelperIcon isExpanded={isExpanded} />
             {isExpanded ? <div className="Helper-text">Рабочая область</div> : null}
         </div>
     );
