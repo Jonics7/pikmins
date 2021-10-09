@@ -26,4 +26,9 @@
             margin-right: 0;
         }
     }
+
+    &-layout {
+        display: flex;
+        padding-top: vw(25);
+    }
 }

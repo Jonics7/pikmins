@@ -3,6 +3,7 @@ import './MainPage.scss';
 import filters from '../../Data/DirectionFilters.json';
 import DirectionFilter from '../../Components/DirectionFilter/DirectionFilter';
 import Helper from '../../Components/Helper/Helper';
+import DatasetItem from '../../Components/DatasetItem/DatasetItem';
 
 const MainPage: React.FC = () => {
     const [selectedFilters, setSelectedFilters] = useState<Array<number>>([0]);
@@ -41,6 +42,9 @@ const MainPage: React.FC = () => {
                     ))}
                 </div>
                 <Helper isExpanded={helperIsExpanded} handleHelper={handleHelper} />
+            </div>
+            <div className="MainPage-layout">
+                <DatasetItem small title="Accountants, San Diego (CA)" price={49.0} rows={512} />
             </div>
         </div>
     );

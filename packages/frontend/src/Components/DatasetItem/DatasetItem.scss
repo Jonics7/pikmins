@@ -1,0 +1,49 @@
+@import '../../styles.scss';
+
+.DatasetItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #fff;
+    border-radius: 10px;
+
+    padding: vw(40);
+
+    &-icon {
+        width: vw(100);
+        height: vw(100);
+
+        margin-right: vw(40);
+    }
+
+    &-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        &-title {
+            font-size: vw(18);
+            font-weight: 500;
+            margin-bottom: vw(27);
+        }
+
+        &-price {
+            font-weight: 700;
+            font-size: vw(18);
+
+            margin-right: vw(20);
+        
+            &-holder {
+                display: flex;
+                align-items: center;
+                width: 100%;
+            }
+        }
+
+        &-rows {
+            font-weight: 300;
+        }
+    }
+}
