@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './MainPage.scss';
 import filters from '../../Data/DirectionFilters.json';
 import DirectionFilter from '../../Components/DirectionFilter/DirectionFilter';
-import { ReactComponent as Helper } from '../../Assets/Icons/helper.svg';
+import { default as Helper } from '../../Components/MainHelper/MainHelper';
 
 const MainPage: React.FC = () => {
     const [selectedFilters, setSelectedFilters] = useState<Array<number>>([0]);

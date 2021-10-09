@@ -1,0 +1,12 @@
+.MainHelper {
+    &-body {
+        transition: stroke ease 0.25s;
+        stroke: rgba($color: #89b5f7, $alpha: 1);
+    }
+
+    &:hover {
+        .MainHelper-body {
+            stroke: rgba($color: #ffffff, $alpha: 1);
+        }
+    }
+}
