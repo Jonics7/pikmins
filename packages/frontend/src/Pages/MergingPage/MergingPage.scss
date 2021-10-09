@@ -43,7 +43,9 @@
         }
 
         .Dropdown {
-            // box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.12);
+            &.expanded {
+                box-shadow: 0 4px 40px 5px rgba(0, 0, 0, 0.12);
+            }
 
             &-selected {
                 background: #fff;
@@ -64,7 +66,7 @@
             }
 
             &-items {
-                // box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.12);
+                box-shadow: 0 20px 40px 5px rgba(0, 0, 0, 0.12);
 
                 background: #fff;
 

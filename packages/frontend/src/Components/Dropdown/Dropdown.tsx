@@ -17,7 +17,7 @@ function Dropdown<T extends string>({ items, onItemChange }: DropdownProps<T>) {
     };
 
     return (
-        <div className="Dropdown">
+        <div className={`Dropdown${isExpanded ? ' expanded' : ''}`}>
             <div className="Dropdown-selected" onClick={() => setIsExpanded(!isExpanded)}>
                 <div className="Dropdown-selected-text">{selected}</div>
                 <Angle className="Dropdown-arrow" />
