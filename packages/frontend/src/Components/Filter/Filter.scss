@@ -6,4 +6,76 @@
     background-color: #89b5f7;
     border-radius: vw(10);
     margin-top: vw(25);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: vw(20) vw(30) vw(20) vw(17);
+
+    &-info {
+        display: flex;
+        align-items: center;
+    }
+
+    &-delete {
+        width: vw(45);
+        height: vw(45);
+        cursor: pointer;
+    }
+
+    .Dropdown {
+        margin-right: vw(40);
+
+        &.expanded {
+            box-shadow: 0 4px 40px 5px rgba(0, 0, 0, 0.12);
+        }
+
+        &-selected {
+            background: #fff;
+            height: 100%;
+
+            padding: vw(18) vw(24);
+
+            &-text {
+                color: #89b5f7;
+                font-weight: 500;
+                font-size: vw(18);
+                line-height: vw(24);
+            }
+
+            svg {
+                * {
+                    fill: #89b5f7;
+                }
+            }
+        }
+
+        &-items {
+            box-shadow: 0 20px 40px 5px rgba(0, 0, 0, 0.12);
+            background: #fff;
+
+            &::before {
+                background: #89b5f7;
+                height: 1px;
+                width: 140%;
+            }
+        }
+
+        &-item {
+            color: #89b5f7;
+            font-weight: 400;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &-line {
+            background: #89b5f7;
+            height: 1px;
+            width: 140%;
+            
+        }
+    }
 }

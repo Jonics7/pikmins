@@ -14,6 +14,7 @@ function Dropdown<T extends string>({ items, onItemChange }: DropdownProps<T>) {
     const onItemClick = (text: T) => {
         setSelected(text);
         setIsExpanded(false);
+        onItemChange(text);
     };
 
     return (
