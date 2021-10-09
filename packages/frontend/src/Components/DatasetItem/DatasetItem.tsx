@@ -1,6 +1,7 @@
 import React from 'react';
 import './DatasetItem.scss';
 import { ReactComponent as Document } from '../../Assets/Icons/document.svg';
+import { ReactComponent as DocFilled } from '../../Assets/Icons/doc-filled.svg';
 import Tag from '../Tag/Tag';
 
 interface DatasetItemProps {
@@ -8,12 +9,14 @@ interface DatasetItemProps {
     title: string;
     price: number;
     rows: number;
+    selected: boolean;
+    onClick: () => void;
 }
 
-const DatasetItem: React.FC<DatasetItemProps> = ({ small, title, price, rows }) => {
+const DatasetItem: React.FC<DatasetItemProps> = ({ small, title, price, rows, selected, onClick }) => {
     return (
-        <div className={'DatasetItem' + (!small ? ' big' : '')}>
-            <Document className="DatasetItem-icon" />
+        <div className={'DatasetItem' + (!small ? ' big' : '')} onClick={onClick}>
+            {selected ? <DocFilled className="DatasetItem-icon" /> : <Document className="DatasetItem-icon" />}
             {small ? (
                 <div className="DatasetItem-info">
                     <div className="DatasetItem-info-title">{title}</div>

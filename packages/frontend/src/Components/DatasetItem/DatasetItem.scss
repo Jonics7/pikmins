@@ -54,6 +54,7 @@
             margin-bottom: vw(27);
 
             white-space: nowrap;
+            user-select: none;
         }
 
         &-price {
@@ -61,6 +62,8 @@
             font-size: vw(18);
 
             margin-right: vw(20);
+
+            user-select: none;
 
             &-holder {
                 display: flex;
@@ -73,6 +76,7 @@
             font-size: vw(14);
             font-weight: 300;
             white-space: nowrap;
+            user-select: none;
         }
 
         &-tags {

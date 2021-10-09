@@ -39,9 +39,9 @@
         ]
     },
     {
-        "urn": "dataset_2_1234",
+        "urn": "dataset_1_1234",
         "title": "Dataset 2",
-        "tags": ["tag1", "tag2"],
+        "tags": [],
         "price": 100,
         "rows": 5489,
         "fields": [
@@ -61,6 +61,48 @@
         "urn": "dataset_2_12345",
         "title": "Dataset 3",
         "tags": ["tag1", "tag2"],
+        "price": 150,
+        "rows": 7847,
+        "fields": [
+            {
+                "id": "Name",
+                "type": "string",
+                "description": "description"
+            }
+        ]
+    },
+    {
+        "urn": "dataset_3_12345",
+        "title": "Dataset 3",
+        "tags": ["tag1", "tag2"],
+        "price": 150,
+        "rows": 7847,
+        "fields": [
+            {
+                "id": "Name",
+                "type": "string",
+                "description": "description"
+            }
+        ]
+    },
+    {
+        "urn": "dataset_4_12345",
+        "title": "Dataset 4",
+        "tags": ["tag1", "tag2"],
+        "price": 150,
+        "rows": 7847,
+        "fields": [
+            {
+                "id": "Name",
+                "type": "string",
+                "description": "description"
+            }
+        ]
+    },
+    {
+        "urn": "dataset_5_12345",
+        "title": "Dataset 5",
+        "tags": [],
         "price": 150,
         "rows": 7847,
         "fields": [
