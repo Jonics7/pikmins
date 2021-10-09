@@ -1,3 +1,4 @@
+import { Dataset } from 'common';
 import React from 'react';
 import { FieldType } from '../../Pages/MergingPage/MergingPage';
 import DatasetField from '../DatasetField/DatasetField';
@@ -7,62 +8,46 @@ import './MergingDataset.scss';
 export interface MergingDatasetProps {
     onFieldClick: (fieldData: FieldType) => void;
     selectedFields: Array<FieldType>;
-    title: string;
+    dataset: Dataset;
 }
 
-const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedFields, title }) => {
+const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedFields, dataset }) => {
     return (
         <div className="MergingDataset">
             <div className="MergingDataset-info">
-                <div className="MergingDataset-title">{title}</div>
+                <div className="MergingDataset-title">{dataset.title}</div>
                 <div className="MergingDataset-tags">
-                    <Tag color="#E18080" text="Financial Advisors" />
-                    <Tag color="#997EBB" text="Financial Consultant" />
+                    {dataset.tags?.map((tag, idx) => (
+                        <Tag color="#E18080" text={tag} key={idx} />
+                    ))}
                 </div>
             </div>
             <div className="MergingDataset-fields-holder">
                 <div className="MergingDataset-fields">
-                    <DatasetField
-                        onClick={() =>
-                            onFieldClick({
-                                datasetId: 0,
-                                fieldId: 0,
-                                name: 'UserID',
-                            })
-                        }
-                        selected={selectedFields[0].fieldId === 0}
-                        name="UserID"
-                        value="1337"
-                    />
-                    <DatasetField
-                        onClick={() =>
-                            onFieldClick({
-                                datasetId: 0,
-                                fieldId: 1,
-                                name: 'Email',
-                            })
-                        }
-                        selected={selectedFields[0].fieldId === 1}
-                        name="Email"
-                        value="example@emal.ru"
-                    />
-                    <DatasetField
-                        onClick={() =>
-                            onFieldClick({
-                                datasetId: 0,
-                                fieldId: 2,
-                                name: 'ФИО',
-                            })
-                        }
-                        selected={selectedFields[0].fieldId === 2}
-                        name="ФИО"
-                        value="name"
-                    />
+                    {dataset.fields.map((field, index) => (
+                        <DatasetField
+                            onClick={() =>
+                                onFieldClick({
+                                    id: field.id,
+                                    description: field.description,
+                                    type: field.type,
+                                })
+                            }
+                            selected={selectedFields.every((fieldData) => field.id === fieldData.id)}
+                            name={field.id}
+                            value={field.description ?? ''}
+                            key={index}
+                        />
+                    ))}
                 </div>
             </div>
             <div className="MergingDataset-price">
-                <div className="MergingDataset-price-value">$299.00</div>
-                <div className="MergingDataset-rows">Rows: 4636</div>
+                {dataset.price !== null && dataset.price !== undefined ? (
+                    <div className="MergingDataset-price-value">${dataset.price}.00</div>
+                ) : null}
+                {dataset.rows !== null && dataset !== undefined ? (
+                    <div className="MergingDataset-rows">Rows: {dataset.rows}</div>
+                ) : null}
             </div>
         </div>
     );

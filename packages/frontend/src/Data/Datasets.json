@@ -1,0 +1,56 @@
+[
+    {
+        "title": "Dataset 1",
+        "tags": ["tag1", "tag2"],
+        "price": 50,
+        "rows": 1754,
+        "fields": [
+            {
+                "id": "Name",
+                "type": "string",
+                "description": "description"
+            },
+            {
+                "id": "Phone",
+                "type": "number",
+                "description": "description"
+            },
+            {
+                "id": "Address",
+                "type": "string",
+                "description": "description"
+            }
+        ]
+    },
+    {
+        "title": "Dataset 2",
+        "tags": ["tag1", "tag2"],
+        "price": 100,
+        "rows": 5489,
+        "fields": [
+            {
+                "id": "UserID",
+                "type": "string",
+                "description": "description"
+            },
+            {
+                "id": "Email",
+                "type": "number",
+                "description": "description"
+            }
+        ]
+    },
+    {
+        "title": "Dataset 3",
+        "tags": ["tag1", "tag2"],
+        "price": 150,
+        "rows": 7847,
+        "fields": [
+            {
+                "id": "Name",
+                "type": "string",
+                "description": "description"
+            }
+        ]
+    }
+]

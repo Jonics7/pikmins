@@ -4,6 +4,8 @@
     width: vw(120);
     height: vw(95);
 
+    margin-right: vw(75);
+
     display: flex;
     flex-direction: column;
 
@@ -19,6 +21,10 @@
 
     transition: background 0.25s ease-in-out 0s, color 0.25s ease-in-out 0s;
 
+    &:last-child {
+        margin-right: 0;
+    }
+ 
     &-name {
         font-size: vw(18);
         line-height: vw(24);
