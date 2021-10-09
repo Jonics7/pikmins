@@ -13,15 +13,43 @@ export type DropdownItemsType = typeof DropdownItems[number];
 const SortByItems = ['Sort By', 'Name', 'Country', 'Price'] as const;
 export type SortByItemsType = typeof SortByItems[number];
 
+export type FieldType = {
+    datasetId: number;
+    fieldId: number;
+    name: string;
+};
+
+const emptyField: FieldType = {
+    datasetId: -1,
+    fieldId: -1,
+    name: '',
+};
+
 const MergingPage: React.FC = () => {
-    const [fields, setFields] = useState<Array<string>>([]);
+    const [fields, setFields] = useState<Array<FieldType>>([emptyField, emptyField]);
     const [result, setResult] = useState<string>('Financial Advisors Combination');
 
-    const handeFields = (field: string) => {
-        if (fields.includes(field)) {
-            setFields(fields.filter((name) => field !== name));
+    const handeFields = (field: FieldType) => {
+        if (fields[0].datasetId === field.datasetId) {
+            if (fields[0].fieldId === field.fieldId) {
+                setFields([emptyField, fields[1]]);
+            } else {
+                setFields([field, fields[1]]);
+            }
+        } else if (fields[1].datasetId === field.datasetId) {
+            if (fields[1].fieldId === field.fieldId) {
+                setFields([fields[0], emptyField]);
+            } else {
+                setFields([fields[0], field]);
+            }
         } else {
-            setFields([...fields, field]);
+            setFields([field, ...fields]);
+        }
+    };
+
+    const onSubmit = () => {
+        if (fields.every((field) => field.datasetId !== -1)) {
+            //TODO: do something
         }
     };
 
@@ -41,15 +69,19 @@ const MergingPage: React.FC = () => {
             </div>
             <div className="MergingPage-layout">
                 <div className="MergingPage-datasets">
-                    <MergingDataset selectedFields={fields} onFieldClick={(field: string) => handeFields(field)} />
+                    <MergingDataset
+                        title="Financial Advisor, USA"
+                        selectedFields={fields}
+                        onFieldClick={(field: FieldType) => handeFields(field)}
+                    />
                 </div>
                 <div className="MergingPage-controls">
                     <div className="MergingPage-controls-field">
-                        <div className="MergingPage-controls-field-text">{fields[0]}</div>
+                        <div className="MergingPage-controls-field-text">{fields[0].name}</div>
                     </div>
                     <Dropdown items={DropdownItems} onItemChange={() => {}} />
                     <div className="MergingPage-controls-field">
-                        <div className="MergingPage-controls-field-text">{fields[1]}</div>
+                        <div className="MergingPage-controls-field-text">{fields[1].name}</div>
                     </div>
                     <Arrow className="MergingPage-controls-arrow" />
                     <input
@@ -59,7 +91,9 @@ const MergingPage: React.FC = () => {
                         onChange={(e) => setResult(e.target.value)}
                         value={result}
                     />
-                    <div className="MergingPage-controls-button">Convert</div>
+                    <div className="MergingPage-controls-button" onClick={onSubmit}>
+                        Convert
+                    </div>
                 </div>
             </div>
         </div>

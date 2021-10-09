@@ -1,20 +1,20 @@
 import React from 'react';
+import { FieldType } from '../../Pages/MergingPage/MergingPage';
 import DatasetField from '../DatasetField/DatasetField';
 import Tag from '../Tag/Tag';
 import './MergingDataset.scss';
 
-import './MergingDataset.scss';
-
 export interface MergingDatasetProps {
-    onFieldClick: (field: string) => void;
-    selectedFields: Array<string>;
+    onFieldClick: (fieldData: FieldType) => void;
+    selectedFields: Array<FieldType>;
+    title: string;
 }
 
-const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedFields }) => {
+const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedFields, title }) => {
     return (
         <div className="MergingDataset">
             <div className="MergingDataset-info">
-                <div className="MergingDataset-title">Financial Advisor, USA</div>
+                <div className="MergingDataset-title">{title}</div>
                 <div className="MergingDataset-tags">
                     <Tag color="#E18080" text="Financial Advisors" />
                     <Tag color="#997EBB" text="Financial Consultant" />
@@ -23,20 +23,38 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedF
             <div className="MergingDataset-fields-holder">
                 <div className="MergingDataset-fields">
                     <DatasetField
-                        onClick={(field: string) => onFieldClick(field)}
-                        selected={selectedFields.includes('UserID')}
+                        onClick={() =>
+                            onFieldClick({
+                                datasetId: 0,
+                                fieldId: 0,
+                                name: 'UserID',
+                            })
+                        }
+                        selected={selectedFields[0].fieldId === 0}
                         name="UserID"
                         value="1337"
                     />
                     <DatasetField
-                        onClick={(field: string) => onFieldClick(field)}
-                        selected={selectedFields.includes('Email')}
+                        onClick={() =>
+                            onFieldClick({
+                                datasetId: 0,
+                                fieldId: 1,
+                                name: 'Email',
+                            })
+                        }
+                        selected={selectedFields[0].fieldId === 1}
                         name="Email"
                         value="example@emal.ru"
                     />
                     <DatasetField
-                        onClick={(field: string) => onFieldClick(field)}
-                        selected={selectedFields.includes('ФИО')}
+                        onClick={() =>
+                            onFieldClick({
+                                datasetId: 0,
+                                fieldId: 2,
+                                name: 'ФИО',
+                            })
+                        }
+                        selected={selectedFields[0].fieldId === 2}
                         name="ФИО"
                         value="name"
                     />

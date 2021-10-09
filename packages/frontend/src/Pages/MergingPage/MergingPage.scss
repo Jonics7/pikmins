@@ -43,7 +43,7 @@
         }
 
         .Dropdown {
-            box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.12);
+            // box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.12);
 
             &-selected {
                 background: #fff;
@@ -181,6 +181,9 @@
             font-weight: 700;
             padding: vw(12) vw(58);
             margin-top: vw(20);
+
+            user-select: none;
+            cursor: pointer;
         }
     }
 }
