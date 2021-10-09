@@ -77,6 +77,7 @@ router.get('/datasets', function (req, res) {
                         };
                     });
                 return {
+                    urn: entity.urn,
                     title: entity.name,
                     fields,
                 };
