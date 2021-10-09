@@ -4,18 +4,17 @@ import DatasetField from '../DatasetField/DatasetField';
 import Tag from '../Tag/Tag';
 import './MergingDataset.scss';
 
-import './MergingDataset.scss';
-
 export interface MergingDatasetProps {
     onFieldClick: (fieldData: FieldType) => void;
     selectedFields: Array<FieldType>;
+    title: string;
 }
 
-const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedFields }) => {
+const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedFields, title }) => {
     return (
         <div className="MergingDataset">
             <div className="MergingDataset-info">
-                <div className="MergingDataset-title">Financial Advisor, USA</div>
+                <div className="MergingDataset-title">{title}</div>
                 <div className="MergingDataset-tags">
                     <Tag color="#E18080" text="Financial Advisors" />
                     <Tag color="#997EBB" text="Financial Consultant" />

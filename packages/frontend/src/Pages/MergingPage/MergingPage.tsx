@@ -31,13 +31,23 @@ const MergingPage: React.FC = () => {
 
     const handeFields = (field: FieldType) => {
         if (fields[0].datasetId === field.datasetId) {
-            setFields([field, fields[1]]);
+            if (fields[0].fieldId === field.fieldId) {
+                setFields([emptyField, fields[1]]);
+            } else {
+                setFields([field, fields[1]]);
+            }
         } else if (fields[1].datasetId === field.datasetId) {
-            setFields([fields[0], field]);
+            if (fields[1].fieldId === field.fieldId) {
+                setFields([fields[0], emptyField]);
+            } else {
+                setFields([fields[0], field]);
+            }
         } else {
             setFields([field, ...fields]);
         }
     };
+
+    const onSubmit = () => {};
 
     return (
         <div className="MergingPage">
@@ -55,7 +65,11 @@ const MergingPage: React.FC = () => {
             </div>
             <div className="MergingPage-layout">
                 <div className="MergingPage-datasets">
-                    <MergingDataset selectedFields={fields} onFieldClick={(field: FieldType) => handeFields(field)} />
+                    <MergingDataset
+                        title="Financial Advisor, USA"
+                        selectedFields={fields}
+                        onFieldClick={(field: FieldType) => handeFields(field)}
+                    />
                 </div>
                 <div className="MergingPage-controls">
                     <div className="MergingPage-controls-field">
@@ -73,7 +87,9 @@ const MergingPage: React.FC = () => {
                         onChange={(e) => setResult(e.target.value)}
                         value={result}
                     />
-                    <div className="MergingPage-controls-button">Convert</div>
+                    <div className="MergingPage-controls-button" onClick={onSubmit}>
+                        Convert
+                    </div>
                 </div>
             </div>
         </div>
