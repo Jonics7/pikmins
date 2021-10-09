@@ -69,7 +69,7 @@
                     margin-right: 0;
                 }
             }
-            
+
             &-doc {
                 width: vw(80);
                 height: vw(80);
@@ -87,7 +87,19 @@
     }
 
     &-layout {
-        display: flex;
         padding-top: vw(25);
+
+        &-row {
+            display: flex;
+
+            & > * {
+                flex: 1 1 auto;
+                margin-right: vw(20);
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
     }
 }

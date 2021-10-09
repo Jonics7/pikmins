@@ -2,7 +2,6 @@
 
 .DatasetItem {
     display: flex;
-    justify-content: space-between;
     align-items: center;
 
     background: #fff;
@@ -12,6 +11,10 @@
 
     &.big {
         padding-right: vw(80);
+
+        > .DatasetItem-info {
+            flex: 1 1 auto;
+        }
     }
 
     &-icon {
@@ -49,6 +52,8 @@
             font-size: vw(18);
             font-weight: 500;
             margin-bottom: vw(27);
+
+            white-space: nowrap;
         }
 
         &-price {
@@ -67,6 +72,7 @@
         &-rows {
             font-size: vw(14);
             font-weight: 300;
+            white-space: nowrap;
         }
 
         &-tags {

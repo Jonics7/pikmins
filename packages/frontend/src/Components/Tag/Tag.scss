@@ -13,6 +13,8 @@
     &-text {
         font-weight: 300;
         font-size: vw(14);
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     &-circle {

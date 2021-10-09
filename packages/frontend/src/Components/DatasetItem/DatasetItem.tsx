@@ -30,7 +30,7 @@ const DatasetItem: React.FC<DatasetItemProps> = ({ small, title, price, rows }) 
                     </div>
                     <div className="DatasetItem-info-row">
                         <div className="DatasetItem-info-tags">
-                            <Tag text="Financial advisors" color="#E18080" />
+                            <Tag text="Financial" color="#E18080" />
                             <Tag text="Planner" color="#997EBB" />
                         </div>
                         <div className="DatasetItem-info-rows">Rows: {rows}</div>
