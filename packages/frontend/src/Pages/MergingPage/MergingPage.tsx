@@ -14,8 +14,16 @@ const SortByItems = ['Sort By', 'Name', 'Country', 'Price'] as const;
 export type SortByItemsType = typeof SortByItems[number];
 
 const MergingPage: React.FC = () => {
-    const [fields, setFields] = useState<Array<string>>(['Телефон', 'Телефон']);
+    const [fields, setFields] = useState<Array<string>>([]);
     const [result, setResult] = useState<string>('Financial Advisors Combination');
+
+    const handeFields = (field: string) => {
+        if (fields.includes(field)) {
+            setFields(fields.filter((name) => field !== name));
+        } else {
+            setFields([...fields, field]);
+        }
+    };
 
     return (
         <div className="MergingPage">
@@ -33,7 +41,7 @@ const MergingPage: React.FC = () => {
             </div>
             <div className="MergingPage-layout">
                 <div className="MergingPage-datasets">
-                    <MergingDataset />
+                    <MergingDataset selectedFields={fields} onFieldClick={(field: string) => handeFields(field)} />
                 </div>
                 <div className="MergingPage-controls">
                     <div className="MergingPage-controls-field">
