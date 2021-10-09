@@ -34,7 +34,7 @@ const App: React.FC = () => {
                     <Route path="/" exact>
                         {isLoggined ? <MainPage /> : <StartPage onLogin={(id: string) => setUserId(id)} />}
                     </Route>
-                    <Route path="/merging/:id" exact component={MergingPage} />
+                    <Route path="/merging" exact component={MergingPage} />
                 </Switch>
             </div>
         </UserContext.Provider>

@@ -5,6 +5,7 @@ import DatasetField from '../DatasetField/DatasetField';
 import Tag from '../Tag/Tag';
 import './MergingDataset.scss';
 import { ReactComponent as Angle } from '../../Assets/Icons/angle.svg';
+import Filter from '../Filter/Filter';
 
 export interface MergingDatasetProps {
     onFieldClick: (dataset: Dataset, fieldData: FieldType) => void;
@@ -64,6 +65,7 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedF
                             ) : null}
                         </div>
                     </div>
+                    <Filter />
                     <button className="MergingDataset-add-filter">Добавить фильтры</button>
                 </div>
             )}

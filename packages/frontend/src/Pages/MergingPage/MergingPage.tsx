@@ -53,17 +53,19 @@ const MergingPage: React.FC = () => {
                 <Helper isExpanded handleHelper={() => {}} />
             </div>
             <div className="MergingPage-layout">
-                <div className="MergingPage-datasets">
-                    {data.map((dataset, index) => (
-                        <MergingDataset
-                            dataset={dataset}
-                            selectedFields={fields}
-                            onFieldClick={(dataset: Dataset, field: FieldType) => handeFields(dataset, field)}
-                            key={index}
-                            expanded={dataset.urn === expandedDataset}
-                            expand={() => setExpandedDataset(dataset.urn === expandedDataset ? '' : dataset.urn)}
-                        />
-                    ))}
+                <div className="MergingPage-datasets-wrapper">
+                    <div className="MergingPage-datasets">
+                        {data.map((dataset, index) => (
+                            <MergingDataset
+                                dataset={dataset}
+                                selectedFields={fields}
+                                onFieldClick={(dataset: Dataset, field: FieldType) => handeFields(dataset, field)}
+                                key={index}
+                                expanded={dataset.urn === expandedDataset}
+                                expand={() => setExpandedDataset(dataset.urn === expandedDataset ? '' : dataset.urn)}
+                            />
+                        ))}
+                    </div>
                 </div>
                 <div className="MergingPage-controls">
                     <div className="MergingPage-controls-field">

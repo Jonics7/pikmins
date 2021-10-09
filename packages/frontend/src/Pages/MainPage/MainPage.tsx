@@ -32,7 +32,7 @@ const MainPage: React.FC = () => {
 
     const handleHelper = () => {
         if (selectedDatasets.length !== 0) {
-            history.push(`/merging/${getQueryParams()}`);
+            history.push(`/merging?=${getQueryParams()}`);
         } else {
             setShowPopup(!showPopup);
         }

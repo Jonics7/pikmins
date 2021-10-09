@@ -36,7 +36,7 @@
 
             cursor: pointer;
 
-            >svg {
+            > svg {
                 width: vw(45);
                 height: auto;
             }
@@ -50,7 +50,7 @@
                 height: 100%;
 
                 &-text {
-                    color: #89B5F7;
+                    color: #89b5f7;
                     font-weight: 700;
                     font-size: vw(24);
                     line-height: vw(24);
@@ -58,51 +58,53 @@
 
                 svg {
                     * {
-                        fill: #89B5F7;
+                        fill: #89b5f7;
                     }
                 }
             }
 
             &-items {
                 // box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.12);
-            
+
                 background: #fff;
 
                 top: vw(70);
 
                 &::before {
-                    background:#89B5F7;
+                    background: #89b5f7;
                 }
             }
 
             &-item {
-                color: #89B5F7;
+                color: #89b5f7;
             }
 
             &-line {
-                background: #89B5F7;
+                background: #89b5f7;
             }
         }
     }
 
     &-layout {
         width: 100%;
-        height: vw(574);
+        height: 100%;
 
         display: flex;
         justify-content: space-between;
     }
 
     &-datasets {
-        height: 100%;
-        width: calc(100% - #{vw(600)});
-
         display: flex;
         flex-direction: column;
+        &-wrapper {
+            flex: 1 1 auto;
+            margin-right: vw(20);
+            overflow-y: auto;
+        }
     }
 
     &-controls {
-        height: 100%;
+        height: vw(574);
         width: vw(580);
         background: #fff;
         border-radius: 10px;
@@ -117,7 +119,7 @@
         &-field {
             height: vw(50);
             width: 100%;
-            background: #F4F7FA;
+            background: #f4f7fa;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -143,12 +145,12 @@
         &-result {
             height: vw(50);
             width: 100%;
-            background: #F4F7FA;
+            background: #f4f7fa;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            
+
             font-size: vw(18);
             line-height: vw(24);
             font-weight: 500;
@@ -161,7 +163,6 @@
             text-align: center;
 
             &::placeholder {
-
             }
 
             &:focus {
@@ -171,7 +172,7 @@
 
         &-button {
             border-radius: 10px;
-            background: #89B5F7;
+            background: #89b5f7;
             display: flex;
             align-items: center;
             justify-content: center;

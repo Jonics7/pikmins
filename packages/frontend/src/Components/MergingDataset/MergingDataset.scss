@@ -81,6 +81,7 @@
         }
 
         &.rotate {
+            top: vw(62);
             transform: rotateZ(180deg);
         }
     }
