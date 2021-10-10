@@ -1,5 +1,6 @@
 import React from 'react';
-import { FieldType } from '../../Pages/MergingPage/MergingPage';
+import { FieldType as Field } from '../../Pages/MergingPage/MergingPage';
+import { FieldType } from 'common';
 import Dropdown from '../Dropdown/Dropdown';
 
 export interface AddRequest {
@@ -9,14 +10,31 @@ export interface AddRequest {
     item2?: string;
 }
 
+export interface NewFieldType {
+    id: string;
+    type: FieldType;
+    action: string;
+    item1: string;
+    item2: string;
+}
+
 export interface MergingDatasetAdditionProps {
-    fields: FieldType[];
+    fields: Field[];
     request: AddRequest;
     onChange: (newState: AddRequest) => void;
     close: () => void;
+    submit: (newState: NewFieldType) => void;
 }
 
-const MergingDatasetAddition: React.FC<MergingDatasetAdditionProps> = ({ request, onChange, close, fields }) => {
+const MergingDatasetAddition: React.FC<MergingDatasetAdditionProps> = ({
+    request,
+    onChange,
+    close,
+    fields,
+    submit,
+}) => {
+    const isValid = (request.action && request.item1 && request.item2 && true) || false;
+
     return (
         <div className="MergingDataset-addition">
             <div className="MergingDataset-addition-left">
@@ -64,6 +82,7 @@ const MergingDatasetAddition: React.FC<MergingDatasetAdditionProps> = ({ request
                             onItemChange={(item1) => {
                                 onChange({ ...request, item1 });
                             }}
+                            value={request.item1}
                         />
                         <Dropdown
                             items={fields.map((f) => f.id)}
@@ -71,6 +90,7 @@ const MergingDatasetAddition: React.FC<MergingDatasetAdditionProps> = ({ request
                             onItemChange={(item2) => {
                                 onChange({ ...request, item2 });
                             }}
+                            value={request.item2}
                         />
                     </div>
                 </div>
@@ -78,7 +98,21 @@ const MergingDatasetAddition: React.FC<MergingDatasetAdditionProps> = ({ request
                     <button className="MergingDataset-addition-button" onClick={close}>
                         Отмена
                     </button>
-                    <button className="MergingDataset-addition-button blue" onClick={close}>
+                    <button
+                        className="MergingDataset-addition-button blue"
+                        onClick={
+                            isValid
+                                ? () =>
+                                      submit({
+                                          id: request.id,
+                                          action: request.action!,
+                                          type: fields.find((f) => f.id === request.item1)!.type,
+                                          item1: request.item1!,
+                                          item2: request.item2!,
+                                      })
+                                : undefined
+                        }
+                    >
                         ОК
                     </button>
                 </div>

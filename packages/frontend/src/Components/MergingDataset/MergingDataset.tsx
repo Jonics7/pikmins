@@ -7,7 +7,7 @@ import './MergingDataset.scss';
 import { ReactComponent as Angle } from '../../Assets/Icons/angle.svg';
 import Filter, { FilterState } from '../Filter/Filter';
 import { useState } from 'react';
-import MergingDatasetAddition, { AddRequest } from './MergingDatasetAddition';
+import MergingDatasetAddition, { AddRequest, NewFieldType } from './MergingDatasetAddition';
 
 export interface MergingDatasetProps {
     onFieldClick: (dataset: Dataset, fieldData: FieldType) => void;
@@ -20,6 +20,7 @@ export interface MergingDatasetProps {
 const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedFields, dataset, expanded, expand }) => {
     const [addRequest, setAddRequest] = useState<AddRequest | undefined>();
     const [filters, setFilters] = useState<Array<FilterState | undefined>>([]);
+    const [newFields, setNewFields] = useState<Array<NewFieldType>>([]);
 
     const addFilter = () => {
         const filter: FilterState = {
@@ -33,8 +34,11 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedF
     };
 
     const onChange = (newState: FilterState, idx: number) => {
-        const filter = filters.find((data) => data?.fieldId === newState.fieldId);
-        const newArray: Array<FilterState | undefined> = [...filters.slice(0, idx), filter, ...filters.slice(idx + 1)];
+        const newArray: Array<FilterState | undefined> = [
+            ...filters.slice(0, idx),
+            newState,
+            ...filters.slice(idx + 1),
+        ];
 
         setFilters(newArray);
     };
@@ -58,7 +62,7 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedF
                                     onClick={() => onFieldClick(dataset, field)}
                                     selected={selectedFields.every((fieldData) => field.id === fieldData.id)}
                                     name={field.id}
-                                    value={field.description ?? ''}
+                                    value={field.type}
                                     key={index}
                                     linked="a"
                                 />
@@ -108,7 +112,16 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedF
                                     onClick={() => onFieldClick(dataset, field)}
                                     selected={selectedFields.every((fieldData) => field.id === fieldData.id)}
                                     name={field.id}
-                                    value={field.description ?? ''}
+                                    value={field.type}
+                                    key={field.id}
+                                />
+                            ))}
+                            {newFields.map((field) => (
+                                <DatasetField
+                                    onClick={() => onFieldClick(dataset, field)}
+                                    selected={selectedFields.every((fieldData) => field.id === fieldData.id)}
+                                    name={field.id}
+                                    value={field.type}
                                     key={field.id}
                                 />
                             ))}
@@ -126,6 +139,10 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedF
                             request={addRequest}
                             onChange={setAddRequest}
                             close={() => setAddRequest(undefined)}
+                            submit={(newField) => {
+                                setAddRequest(undefined);
+                                setNewFields([...newFields, newField]);
+                            }}
                             fields={dataset.fields}
                         />
                     ) : null}
