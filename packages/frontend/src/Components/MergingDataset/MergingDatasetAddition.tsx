@@ -44,7 +44,7 @@ const MergingDatasetAddition: React.FC<MergingDatasetAdditionProps> = ({
                         <Dropdown
                             items={['Промежуток', 'Разница', 'Среднее']}
                             value={request.action}
-                            placeholder="Выберите действие"
+                            placeholder="Действие"
                             onItemChange={(action) => {
                                 onChange({
                                     ...request,
