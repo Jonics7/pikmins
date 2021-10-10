@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import './MergingPage.scss';
-import { ReactComponent as Arrow } from '../../Assets/Icons/bottom-arrow.svg';
 import { ReactComponent as Plus } from '../../Assets/Icons/doc-plus.svg';
 import { ReactComponent as Minus } from '../../Assets/Icons/doc-minus.svg';
 import Dropdown from '../../Components/Dropdown/Dropdown';
-import MergingDataset, {
-    MergingDatasetProps,
-    MergingDatasetState,
-} from '../../Components/MergingDataset/MergingDataset';
+import MergingDataset, { MergingDatasetState } from '../../Components/MergingDataset/MergingDataset';
 import Helper from '../../Components/Helper/Helper';
-import datasets from '../../Data/Datasets.json';
 import { Dataset, Filter, DatasetMods, Output } from 'common';
+import QueryString from 'qs';
+import { useContext } from 'react';
+import { DatabasesContext } from '../../datasets';
 
 const DropdownItems = ['One To One', 'Many To Many'] as const;
 export type DropdownItemsType = typeof DropdownItems[number];
@@ -27,14 +25,17 @@ const emptyField: FieldType = {
 };
 
 const MergingPage: React.FC = () => {
-    const [data] = useState<Array<Dataset>>(datasets as Dataset[]);
+    const { datasets: maybeDatasets } = useContext(DatabasesContext);
+    const datasets = maybeDatasets!;
+    const selected = Object.values(QueryString.parse(window.location.search.slice(1)));
+    const [data] = useState<Array<Dataset>>(datasets.filter((d) => selected.includes(d.urn)) as Dataset[]);
     const [states, setStates] = useState<Array<MergingDatasetState>>(
         datasets.map<MergingDatasetState>((_) => ({
             newFields: [],
             filters: [],
         })),
     );
-    const [fields, setFields] = useState<Array<FieldType>>([emptyField, emptyField]);
+    const [fields] = useState<Array<FieldType>>([emptyField, emptyField]);
 
     const [expandedDataset, setExpandedDataset] = useState<string>('');
     const [price, setPrice] = useState<number>(1);
@@ -53,7 +54,7 @@ const MergingPage: React.FC = () => {
 
     const calculateTotalCost = () => {
         let cost = 0;
-        datasets.forEach((dataset) => (cost += dataset.price));
+        datasets.forEach((dataset) => (cost += dataset.price ?? 0));
 
         return cost;
     };
@@ -80,7 +81,13 @@ const MergingPage: React.FC = () => {
                 Accept: 'application/json',
             },
             body,
-        });
+        })
+            .then(() => {
+                window.location.assign('/');
+            })
+            .catch((err) => {
+                alert(err);
+            });
     };
 
     console.log(price);
@@ -118,7 +125,7 @@ const MergingPage: React.FC = () => {
                 </div>
                 <div className="MergingPage-right">
                     <div className="MergingPage-controls">
-                        <div className="MergingPage-title">Work</div>
+                        <div className="MergingPage-title">Связи</div>
                         <div className="MergingPage-controls-field">
                             <div className="MergingPage-controls-field-text">{'Select'}</div>
                         </div>
@@ -127,10 +134,10 @@ const MergingPage: React.FC = () => {
                             <div className="MergingPage-controls-field-text">{'Select'}</div>
                         </div>
                         <div className="MergingPage-controls-button" onClick={link}>
-                            Link
+                            Связать
                         </div>
                     </div>
-                    <div className="MergingPage-price" onClick={onSubmit}>
+                    <div className="MergingPage-price">
                         <div className="MergingPage-title">Цена</div>
                         <input
                             type="text"
@@ -142,7 +149,9 @@ const MergingPage: React.FC = () => {
                             <div className="MergingPage-price-info-text">Включает в себя датасеты на сумму</div>
                             <div className="MergingPage-price-info-cost">{calculateTotalCost()}$</div>
                         </div>
-                        <div className="MergingPage-price-submit">Submit</div>
+                        <div className="MergingPage-price-submit" onClick={onSubmit}>
+                            Отправить запрос
+                        </div>
                     </div>
                 </div>
             </div>

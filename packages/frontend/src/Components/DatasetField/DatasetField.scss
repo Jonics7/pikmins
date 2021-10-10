@@ -3,8 +3,11 @@
 .DatasetField {
     position: relative;
 
-    min-width: vw(120);
-    min-height: vw(95);
+    width: vw(120);
+    flex: 0 0 vw(120);
+    padding: 0 vw(16);
+    min-width: fit-content;
+    height: vw(95);
 
     margin-right: vw(70);
 

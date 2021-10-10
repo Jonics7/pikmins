@@ -6,16 +6,18 @@ import Helper from '../../Components/Helper/Helper';
 import DatasetItem from '../../Components/DatasetItem/DatasetItem';
 import { ReactComponent as Doc } from '../../Assets/Icons/document.svg';
 import { ReactComponent as Arrow } from '../../Assets/Icons/arrow.svg';
-import data from '../../Data/Datasets.json';
 import { Dataset } from 'common';
 import { useHistory } from 'react-router';
 import QueryString from 'qs';
+import { useContext } from 'react';
+import { DatabasesContext } from '../../datasets';
 
 const MainPage: React.FC = () => {
     const [selectedFilters, setSelectedFilters] = useState<Array<number>>([0]);
     const [selectedDatasets, setSelectedDatasets] = useState<Array<string>>([]);
     const [showPopup, setShowPopup] = useState<boolean>(false);
-    const [datasets] = useState<Array<Dataset>>(data as Array<Dataset>);
+    const { datasets: maybeDatasets } = useContext(DatabasesContext);
+    const datasets = maybeDatasets!;
 
     const history = useHistory();
 
@@ -77,22 +79,24 @@ const MainPage: React.FC = () => {
                 </div>
                 <Helper isExpanded={selectedDatasets.length !== 0} handleHelper={handleHelper} />
             </div>
-            <div className="MainPage-layout">
-                {getSlicedArray(datasets).map((rows, idx) => (
-                    <div className="MainPage-layout-row" key={idx}>
-                        {rows.map((dataset, index) => (
-                            <DatasetItem
-                                small={dataset.tags?.length === 0 || dataset.tags === undefined}
-                                title={dataset.title}
-                                price={Number(dataset.price)}
-                                rows={Number(dataset.rows)}
-                                key={index}
-                                selected={selectedDatasets.includes(dataset.urn)}
-                                onClick={() => handeSelectedDatasets(dataset.urn)}
-                            />
-                        ))}
-                    </div>
-                ))}
+            <div className="MainPage-layout-wrapper">
+                <div className="MainPage-layout">
+                    {getSlicedArray(datasets).map((rows, idx) => (
+                        <div className="MainPage-layout-row" key={idx}>
+                            {rows.map((dataset, index) => (
+                                <DatasetItem
+                                    small={dataset.tags?.length === 0 || dataset.tags === undefined}
+                                    title={dataset.title}
+                                    price={dataset.price !== undefined ? Number(dataset.price) : undefined}
+                                    rows={dataset.rows !== undefined ? Number(dataset.rows) : undefined}
+                                    key={index}
+                                    selected={selectedDatasets.includes(dataset.urn)}
+                                    onClick={() => handeSelectedDatasets(dataset.urn)}
+                                />
+                            ))}
+                        </div>
+                    ))}
+                </div>
             </div>
 
             <div className={`MainPage-helper-popup${showPopup ? ' show' : ''}`}>

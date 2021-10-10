@@ -116,23 +116,21 @@
     }
 
     &-fields {
-        width: 100%;
-
         display: flex;
         flex-direction: row;
 
-        overflow-x: auto;
         // z-index: 150;
 
         padding: vw(15);
 
-        &::-webkit-scrollbar {
-            display: none;
-        }
-
         &-holder {
             width: vw(480);
             // overflow: hidden;
+
+            overflow-x: auto;
+            &::-webkit-scrollbar {
+                display: none;
+            }
         }
 
         &-bottom-holder {

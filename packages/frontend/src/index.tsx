@@ -7,13 +7,17 @@ import { BrowserRouter } from 'react-router-dom';
 import { ReactKeycloakProvider } from '@react-keycloak/web';
 import keycloak from './keycloak';
 
+import { DatabasesProvider } from './datasets';
+
 const supportsHistory = 'pushState' in window.history;
 
 ReactDOM.render(
     <React.StrictMode>
         <ReactKeycloakProvider authClient={keycloak} initOptions={{ onLoad: 'login-required' }}>
             <BrowserRouter forceRefresh={supportsHistory}>
-                <App />
+                <DatabasesProvider>
+                    <App />
+                </DatabasesProvider>
             </BrowserRouter>
         </ReactKeycloakProvider>
     </React.StrictMode>,

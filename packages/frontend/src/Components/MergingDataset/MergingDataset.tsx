@@ -117,7 +117,7 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({
                         {dataset.price !== null && dataset.price !== undefined ? (
                             <div className="MergingDataset-price-value">${dataset.price}.00</div>
                         ) : null}
-                        {dataset.rows !== null && dataset !== undefined ? (
+                        {dataset.rows !== null && dataset.rows !== undefined ? (
                             <div className="MergingDataset-rows">Rows: {dataset.rows}</div>
                         ) : null}
                     </div>

@@ -8,6 +8,8 @@ import MergingPage from './Pages/MergingPage/MergingPage';
 import StartPage from './Pages/StartPage/StartPage';
 import { UserContext, UserContextType } from './userContext';
 
+import {} from './datasets';
+
 const App: React.FC = () => {
     const [userId, setUserId] = useState<string>('ui');
     const history = useHistory();
