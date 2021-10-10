@@ -20,6 +20,11 @@
         margin-bottom: 0;
     }
 
+    &-plus {
+        width: vw(30);
+        height: vw(30);
+    }
+
     &-collapsed {
         display: flex;
         flex-direction: row;
