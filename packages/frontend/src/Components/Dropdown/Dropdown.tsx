@@ -4,15 +4,15 @@ import { ReactComponent as Angle } from '../../Assets/Icons/angle.svg';
 
 interface DropdownProps<T extends string> {
     items: T[] | readonly T[];
+    value?: T;
+    placeholder: string;
     onItemChange: (value: T) => void;
 }
 
-function Dropdown<T extends string>({ items, onItemChange }: DropdownProps<T>) {
-    const [selected, setSelected] = useState<T>(items[0]);
+function Dropdown<T extends string>({ items, value, placeholder, onItemChange }: DropdownProps<T>) {
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
     const onItemClick = (text: T) => {
-        setSelected(text);
         setIsExpanded(false);
         onItemChange(text);
     };
@@ -20,12 +20,12 @@ function Dropdown<T extends string>({ items, onItemChange }: DropdownProps<T>) {
     return (
         <div className={`Dropdown${isExpanded ? ' expanded' : ''}`}>
             <div className="Dropdown-selected" onClick={() => setIsExpanded(!isExpanded)}>
-                <div className="Dropdown-selected-text">{selected}</div>
+                <div className="Dropdown-selected-text">{value ?? placeholder}</div>
                 <Angle className="Dropdown-arrow" />
             </div>
             <div className={`Dropdown-items${isExpanded ? ' expanded' : ''}`}>
                 {items
-                    .filter((item: T) => item !== selected)
+                    .filter((item: T) => item !== value)
                     .map((item, index, arr) => (
                         <div className="Dropdown-item" key={index} onClick={() => onItemClick(item)}>
                             {item}
