@@ -6,6 +6,8 @@ import Tag from '../Tag/Tag';
 import './MergingDataset.scss';
 import { ReactComponent as Angle } from '../../Assets/Icons/angle.svg';
 import Filter from '../Filter/Filter';
+import { useState } from 'react';
+import Dropdown from '../Dropdown/Dropdown';
 
 export interface MergingDatasetProps {
     onFieldClick: (dataset: Dataset, fieldData: FieldType) => void;
@@ -15,7 +17,14 @@ export interface MergingDatasetProps {
     expand?: () => void;
 }
 
+interface AddRequest {
+    id: string;
+    action?: string;
+}
+
 const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedFields, dataset, expanded, expand }) => {
+    const [addRequest, setAddRequest] = useState<AddRequest | undefined>();
+
     return (
         <div className="MergingDataset">
             {!expanded ? (
@@ -67,6 +76,83 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedF
                     </div>
                     <Filter />
                     <button className="MergingDataset-add-filter">Добавить фильтры</button>
+
+                    <div className="MergingDataset-fields-bottom-holder">
+                        <div className="MergingDataset-fields">
+                            {dataset.fields.map((field, index) => (
+                                <DatasetField
+                                    onClick={() => onFieldClick(dataset, field)}
+                                    selected={selectedFields.every((fieldData) => field.id === fieldData.id)}
+                                    name={field.id}
+                                    value={field.description ?? ''}
+                                    key={field.id}
+                                />
+                            ))}
+                            <button
+                                className={'MergingDataset-add' + (addRequest !== undefined ? ' inactive' : '')}
+                                onClick={addRequest === undefined ? () => setAddRequest({ id: '' }) : undefined}
+                            >
+                                +
+                            </button>
+                        </div>
+                    </div>
+
+                    {addRequest !== undefined ? (
+                        <div className="MergingDataset-addition">
+                            <div className="MergingDataset-addition-left">
+                                <div className="MergingDataset-addition-info">
+                                    <div className="MergingDataset-addition-info-top">Действие</div>
+                                    <div className="MergingDataset-addition-info-bottom">
+                                        <Dropdown
+                                            items={['Промежуток', 'Разница', 'Среднее']}
+                                            onItemChange={() => {}}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="MergingDataset-addition-info">
+                                    <div className="MergingDataset-addition-info-top">Название</div>
+                                    <div className="MergingDataset-addition-info-bottom">
+                                        <input
+                                            type="text"
+                                            className="MergingDataset-addition-info-input"
+                                            placeholder="Название"
+                                            // onChange={(e) => setResult(e.target.value)}
+                                            // value={result}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="MergingDataset-addition-right">
+                                <div className="MergingDataset-addition-fields">
+                                    <div className="MergingDataset-addition-fields-title">Поля</div>
+                                    <div className="MergingDataset-addition-fields-body">
+                                        <Dropdown
+                                            items={['Промежуток', 'Разница', 'Среднее']}
+                                            onItemChange={() => {}}
+                                        />
+                                        <Dropdown
+                                            items={['Промежуток', 'Разница', 'Среднее']}
+                                            onItemChange={() => {}}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="MergingDataset-addition-buttons">
+                                    <button
+                                        className="MergingDataset-addition-button"
+                                        onClick={() => setAddRequest(undefined)}
+                                    >
+                                        Отмена
+                                    </button>
+                                    <button
+                                        className="MergingDataset-addition-button blue"
+                                        onClick={() => setAddRequest(undefined)}
+                                    >
+                                        ОК
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    ) : null}
                 </div>
             )}
 

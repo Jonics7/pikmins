@@ -74,7 +74,7 @@
         right: vw(30);
 
         transform: rotateZ(0deg);
-        transition: transform 0.15s ease-in-out 0s;
+        transition: transform 0.15s ease 0s, top 0.15s ease 0s;
 
         * {
             fill: #89b5f7;
@@ -122,6 +122,169 @@
         &-holder {
             width: vw(480);
             overflow: hidden;
+        }
+
+        &-bottom-holder {
+            width: vw(1060);
+            overflow: hidden;
+            margin-top: vw(25);
+            .DatasetField {
+                margin-right: vw(50);
+            }
+        }
+    }
+
+    &-add {
+        background-color: #f4f7fa;
+        min-width: vw(120);
+        min-height: vw(95);
+
+        border-radius: vw(10);
+
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+
+        transition: background 0.25s ease-in-out 0s, color 0.25s ease-in-out 0s;
+
+        &.inactive {
+            background: #fafcfd;
+            color: #aaaaaa;
+            cursor: default;
+        }
+    }
+
+    &-addition {
+        height: vw(215);
+        margin-top: vw(25);
+        display: flex;
+
+        &-left {
+            display: flex;
+            flex-direction: column;
+
+            width: vw(310);
+
+            color: #89b5f7;
+
+            margin-right: vw(70);
+        }
+
+        &-info {
+            flex: 0 0 vw(95);
+            border-radius: vw(10);
+            background-color: #f4f7fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: vw(16);
+
+            &-top {
+                font-size: vw(18);
+            }
+
+            &-input {
+                font-size: vw(18);
+                line-height: vw(24);
+                font-weight: 500;
+                color: #010101;
+
+                padding: 0 vw(20);
+
+                border: none;
+                background: none;
+                text-align: center;
+            }
+
+            & + & {
+                margin-top: vw(25);
+            }
+
+            .Dropdown {
+                &-selected {
+                    background-color: #f4f7fa;
+                    &-text {
+                        color: #89b5f7;
+                    }
+                }
+                &-items {
+                    background-color: #f4f7fa;
+                    &::before {
+                        background: #89b5f7;
+                    }
+                }
+                &-item {
+                    color: #89b5f7;
+                }
+                &-line {
+                    background: #89b5f7;
+                }
+                &-arrow > path {
+                    fill: #89b5f7;
+                }
+            }
+        }
+
+        &-right {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-fields {
+            flex: 1 1 auto;
+            background-color: #f4f7fa;
+            color: #89b5f7;
+            font-weight: 600;
+            font-size: vw(18);
+            margin-bottom: vw(25);
+            border-radius: vw(10);
+            padding: vw(16) vw(20);
+            &-title {
+                margin-bottom: vw(16);
+                text-align: center;
+            }
+            &-body {
+                display: flex;
+                .Dropdown + .Dropdown {
+                    margin-left: vw(20);
+                }
+                .Dropdown {
+                    &-selected {
+                        padding: vw(13) vw(20);
+                    }
+                }
+            }
+        }
+
+        &-buttons {
+            height: vw(60);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        &-button {
+            padding: 0 vw(18);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f7fa;
+            color: #89b5f7;
+            font-weight: 600;
+            font-size: vw(18);
+            height: 100%;
+            border-radius: vw(10);
+            & + & {
+                margin-left: vw(30);
+            }
+
+            &.blue {
+                background-color: #89b5f7;
+                color: #ffffff;
+            }
         }
     }
 
