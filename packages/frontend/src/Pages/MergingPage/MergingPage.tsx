@@ -10,7 +10,7 @@ import MergingDataset, {
 } from '../../Components/MergingDataset/MergingDataset';
 import Helper from '../../Components/Helper/Helper';
 import datasets from '../../Data/Datasets.json';
-import { Dataset } from 'common';
+import { Dataset, Filter, DatasetMods, Output } from 'common';
 
 const DropdownItems = ['One To One', 'Many To Many'] as const;
 export type DropdownItemsType = typeof DropdownItems[number];
@@ -47,9 +47,24 @@ const MergingPage: React.FC = () => {
     };
 
     const onSubmit = () => {
-        // if (fields.every((field) => field.datasetId !== -1)) {
-        //     //TODO: do something
-        // }
+        const output: Output = {
+            datasets: datasets.map<DatasetMods>((d, idx) => ({
+                urn: d.urn,
+                filters: states[idx].filters as Filter[],
+                newFields: states[idx].newFields,
+            })),
+        };
+
+        const body = JSON.stringify(output);
+
+        fetch('http://localhost:5000/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+            },
+            body,
+        });
     };
 
     return (

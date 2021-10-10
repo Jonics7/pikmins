@@ -2,11 +2,17 @@ require('fetch-cookie/node-fetch')(require('node-fetch'));
 
 import express from 'express';
 import { GraphQLClient, gql } from 'graphql-request';
+import cors from 'cors';
+import fs from 'fs';
 
 import { Dataset, Field, FieldType } from 'common';
 
 const router = express.Router();
 const app = express();
+
+app.use(express.json());
+
+app.use(cors());
 
 const endpoint = 'http://datahub.yc.pbd.ai:9002/api/graphql';
 
@@ -91,6 +97,24 @@ router.get('/datasets', function (req, res) {
 
 router.get('/', function (req, res) {
     res.send('Hello from pikmins!');
+});
+
+router.post('/submit', function (req, res) {
+    console.log('Submitted!');
+    const tm = Date.now().toString();
+
+    const text = JSON.stringify(req.body, null, 2);
+
+    fs.writeFile('data/' + tm + '.json', text, 'utf8', function (err) {
+        if (err) {
+            console.log('An error occured while writing JSON Object to File.');
+            res.status(500).send(err);
+            return console.log(err);
+        }
+
+        res.status(200).send('ok');
+        console.log('JSON file has been saved.');
+    });
 });
 
 app.use(router);

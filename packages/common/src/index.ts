@@ -14,3 +14,28 @@ export interface Dataset {
     rows?: number;
     fields: Field[];
 }
+
+export interface Output {
+    datasets: DatasetMods[];
+}
+
+export interface DatasetMods {
+    urn: string;
+    filters: Filter[];
+    newFields: NewField[];
+}
+
+export interface Filter {
+    fieldId: string;
+    type: 'range';
+    min: number;
+    max: number;
+}
+
+export interface NewField {
+    id: string;
+    type: FieldType;
+    action: string;
+    item1: string;
+    item2: string;
+}
