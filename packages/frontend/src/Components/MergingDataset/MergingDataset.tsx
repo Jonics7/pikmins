@@ -5,7 +5,7 @@ import DatasetField from '../DatasetField/DatasetField';
 import Tag from '../Tag/Tag';
 import './MergingDataset.scss';
 import { ReactComponent as Angle } from '../../Assets/Icons/angle.svg';
-import Filter from '../Filter/Filter';
+import Filter, { FilterState } from '../Filter/Filter';
 import { useState } from 'react';
 import Dropdown from '../Dropdown/Dropdown';
 
@@ -24,6 +24,27 @@ interface AddRequest {
 
 const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedFields, dataset, expanded, expand }) => {
     const [addRequest, setAddRequest] = useState<AddRequest | undefined>();
+    const [filters, setFilters] = useState<Array<FilterState | undefined>>([]);
+
+    const addFilter = () => {
+        const filter: FilterState = {
+            fieldId: '',
+            filter: {
+                type: 'range',
+                min: 0,
+                max: 0,
+            },
+        };
+
+        setFilters([...filters, filter]);
+    };
+
+    const onChange = (newState: FilterState, idx: number) => {
+        const filter = filters.find((data) => data?.fieldId === newState.fieldId);
+        const newArray: Array<FilterState | undefined> = [...filters.slice(0, idx), filter, ...filters.slice(idx + 1)];
+
+        setFilters(newArray);
+    };
 
     return (
         <div className="MergingDataset">
@@ -75,8 +96,17 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedF
                             ) : null}
                         </div>
                     </div>
-                    <Filter fields={dataset.fields} />
-                    <button className="MergingDataset-add-filter">Добавить фильтры</button>
+                    {filters.map((filter, index) => (
+                        <Filter
+                            fields={dataset.fields}
+                            filterState={filter!}
+                            onChange={(newState) => onChange(newState, index)}
+                            key={index}
+                        />
+                    ))}
+                    <button className="MergingDataset-add-filter" onClick={addFilter}>
+                        Добавить фильтры
+                    </button>
 
                     <div className="MergingDataset-fields-bottom-holder">
                         <div className="MergingDataset-fields">
