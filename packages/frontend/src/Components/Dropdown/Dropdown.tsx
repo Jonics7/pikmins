@@ -14,10 +14,11 @@ function Dropdown<T extends string>({ items, onItemChange }: DropdownProps<T>) {
     const onItemClick = (text: T) => {
         setSelected(text);
         setIsExpanded(false);
+        onItemChange(text);
     };
 
     return (
-        <div className="Dropdown">
+        <div className={`Dropdown${isExpanded ? ' expanded' : ''}`}>
             <div className="Dropdown-selected" onClick={() => setIsExpanded(!isExpanded)}>
                 <div className="Dropdown-selected-text">{selected}</div>
                 <Angle className="Dropdown-arrow" />

@@ -74,7 +74,7 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedF
                             ) : null}
                         </div>
                     </div>
-                    <Filter />
+                    <Filter fields={dataset.fields} />
                     <button className="MergingDataset-add-filter">Добавить фильтры</button>
 
                     <div className="MergingDataset-fields-bottom-holder">

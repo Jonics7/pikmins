@@ -1,0 +1,45 @@
+@import '../../../styles.scss';
+
+.Range {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: vw(310);
+    height: vw(60);
+
+    &-input {
+        border: none;
+
+        background: #fff;
+
+        color: #89b5f7;
+        font-size: vw(18);
+        font-weight: 400;
+        line-height: vw(24);
+
+        height: 100%;
+        width: calc(50% - 1.5px);
+
+        padding: 0 vw(26);
+
+        &::placeholder {    
+            color: #89b5f7;
+            font-size: vw(18);
+            font-weight: 400;
+            line-height: vw(24);
+        }
+
+        &:first-child {
+            border-radius: 10px 0 0 10px;
+        }
+
+        &:last-child {
+            border-radius: 0 10px 10px 0;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
