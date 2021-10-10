@@ -1,6 +1,8 @@
 @import '../../styles.scss';
 
 .DatasetField {
+    position: relative;
+
     min-width: vw(120);
     min-height: vw(95);
 
@@ -30,6 +32,17 @@
 
     &:last-child {
         margin-right: 0;
+    }
+
+    &-link {
+        position: absolute;
+        top: vw(-13.5);
+        left: vw(-13.5);
+
+        width: vw(27);
+        height: vw(27);
+
+        // z-index: 9999;
     }
 
     &-name {

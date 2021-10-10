@@ -73,11 +73,11 @@ const MergingPage: React.FC = () => {
                     <div className="MergingPage-controls">
                         <div className="MergingPage-title">Work</div>
                         <div className="MergingPage-controls-field">
-                            <div className="MergingPage-controls-field-text">{fields[0].id}</div>
+                            <div className="MergingPage-controls-field-text">{'Select'}</div>
                         </div>
                         <Dropdown items={DropdownItems} onItemChange={() => {}} />
                         <div className="MergingPage-controls-field">
-                            <div className="MergingPage-controls-field-text">{fields[1].id}</div>
+                            <div className="MergingPage-controls-field-text">{'Select'}</div>
                         </div>
                         <div className="MergingPage-controls-button" onClick={link}>
                             Link
