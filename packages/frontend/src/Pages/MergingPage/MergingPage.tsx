@@ -44,7 +44,7 @@ const MergingPage: React.FC = () => {
     const link = () => {};
 
     const stringToNumber = (text: string) => {
-        let out = text.replace('$', '');
+        let out = text.replaceAll('$', '');
         if (!out) {
             out = '0';
         }
