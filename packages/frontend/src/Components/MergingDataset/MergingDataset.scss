@@ -33,6 +33,7 @@
         display: flex;
         flex-direction: column;
         flex: 1 1 auto;
+        width: 100%;
 
         .MergingDataset {
             &-title {
@@ -127,11 +128,11 @@
         }
 
         &-bottom-holder {
-            width: vw(1060);
+            width: 100%;
             overflow: hidden;
             margin-top: vw(25);
             .DatasetField {
-                margin-right: vw(50);
+                margin-right: vw(40);
             }
         }
     }
