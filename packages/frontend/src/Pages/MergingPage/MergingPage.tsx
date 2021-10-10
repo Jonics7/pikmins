@@ -4,7 +4,10 @@ import { ReactComponent as Arrow } from '../../Assets/Icons/bottom-arrow.svg';
 import { ReactComponent as Plus } from '../../Assets/Icons/doc-plus.svg';
 import { ReactComponent as Minus } from '../../Assets/Icons/doc-minus.svg';
 import Dropdown from '../../Components/Dropdown/Dropdown';
-import MergingDataset from '../../Components/MergingDataset/MergingDataset';
+import MergingDataset, {
+    MergingDatasetProps,
+    MergingDatasetState,
+} from '../../Components/MergingDataset/MergingDataset';
 import Helper from '../../Components/Helper/Helper';
 import datasets from '../../Data/Datasets.json';
 import { Dataset } from 'common';
@@ -25,6 +28,11 @@ const emptyField: FieldType = {
 
 const MergingPage: React.FC = () => {
     const [data] = useState<Array<Dataset>>(datasets as Dataset[]);
+    const [states, setStates] = useState<Array<MergingDatasetState>>(
+        datasets.map<MergingDatasetState>((_) => ({
+            newFields: [],
+        })),
+    );
     const [fields, setFields] = useState<Array<FieldType>>([emptyField, emptyField]);
     const [result, setResult] = useState<string>('Financial Advisors Combination');
 
@@ -33,6 +41,10 @@ const MergingPage: React.FC = () => {
     const handeFields = (dataset: Dataset, field: FieldType) => {};
 
     const link = () => {};
+
+    const onChange = (newState: MergingDatasetState, idx: number) => {
+        setStates([...states.slice(0, idx), newState, ...states.slice(idx + 1)]);
+    };
 
     const onSubmit = () => {
         // if (fields.every((field) => field.datasetId !== -1)) {
@@ -59,6 +71,8 @@ const MergingPage: React.FC = () => {
                     <div className="MergingPage-datasets">
                         {data.map((dataset, index) => (
                             <MergingDataset
+                                state={states[index]}
+                                onChange={(newState) => onChange(newState, index)}
                                 dataset={dataset}
                                 selectedFields={fields}
                                 onFieldClick={(dataset: Dataset, field: FieldType) => handeFields(dataset, field)}
