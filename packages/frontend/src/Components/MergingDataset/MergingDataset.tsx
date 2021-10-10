@@ -5,6 +5,7 @@ import DatasetField from '../DatasetField/DatasetField';
 import Tag from '../Tag/Tag';
 import './MergingDataset.scss';
 import { ReactComponent as Angle } from '../../Assets/Icons/angle.svg';
+import { ReactComponent as Plus } from '../../Assets/Icons/plus.svg';
 import Filter, { FilterState } from '../Filter/Filter';
 import { useState } from 'react';
 import MergingDatasetAddition, { AddRequest, NewFieldType } from './MergingDatasetAddition';
@@ -151,13 +152,14 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({
                                     name={field.id}
                                     value={field.type}
                                     key={field.id}
+                                    canBeDeleted
                                 />
                             ))}
                             <button
                                 className={'MergingDataset-add' + (addRequest !== undefined ? ' inactive' : '')}
                                 onClick={addRequest === undefined ? () => setAddRequest({ id: '' }) : undefined}
                             >
-                                +
+                                <Plus className="MergingDataset-plus" />
                             </button>
                         </div>
                     </div>
