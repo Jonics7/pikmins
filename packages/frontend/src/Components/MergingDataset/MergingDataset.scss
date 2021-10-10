@@ -9,7 +9,7 @@
     width: 100%;
     min-height: vw(176);
 
-    padding: vw(40);
+    padding: vw(25) vw(40);
     padding-right: vw(80);
 
     margin-bottom: vw(25);
@@ -118,6 +118,8 @@
 
         overflow-x: auto;
         // z-index: 150;
+
+        padding: vw(15);
 
         &::-webkit-scrollbar {
             display: none;
