@@ -1,115 +1,120 @@
 [
     {
         "urn": "dataset_1_123",
-        "title": "Dataset 1",
-        "tags": ["tag1", "tag2"],
+        "title": "Покупки",
+        "tags": ["цена", "товар", "магазин"],
         "price": 50,
         "rows": 1754,
         "fields": [
             {
-                "id": "Name",
+                "id": "Имя",
                 "type": "string",
-                "description": "description"
+                "description": "Имя покупателя"
             },
             {
-                "id": "Phone",
+                "id": "Телефон",
                 "type": "number",
-                "description": "description"
+                "description": "Номер телефона"
             },
             {
-                "id": "Address",
+                "id": "Адрес",
                 "type": "string",
-                "description": "description"
-            },
-            {
-                "id": "Address",
-                "type": "string",
-                "description": "description"
-            },
-            {
-                "id": "Address",
-                "type": "string",
-                "description": "description"
-            },
-            {
-                "id": "Address",
-                "type": "string",
-                "description": "description"
+                "description": "Адрес доставки"
             }
         ]
     },
     {
         "urn": "dataset_1_1234",
-        "title": "Dataset 2",
+        "title": "Безопасность",
         "tags": [],
         "price": 100,
         "rows": 5489,
         "fields": [
             {
-                "id": "UserID",
+                "id": "ФИО",
                 "type": "string",
-                "description": "description"
+                "description": "ФИО"
             },
             {
                 "id": "Email",
                 "type": "number",
-                "description": "description"
+                "description": "email"
             }
         ]
     },
     {
         "urn": "dataset_2_12345",
-        "title": "Dataset 3",
-        "tags": ["tag1", "tag2"],
+        "title": "Данные по промышленным предприятиям",
+        "tags": ["Адрес", "товар", "производство"],
         "price": 150,
         "rows": 7847,
         "fields": [
             {
-                "id": "Name",
+                "id": "Адрес",
                 "type": "string",
-                "description": "description"
+                "description": "Адрес"
             }
         ]
     },
     {
         "urn": "dataset_3_12345",
-        "title": "Dataset 3",
-        "tags": ["tag1", "tag2"],
+        "title": "WiFi в парках",
+        "tags": ["Пароли", "Места"],
         "price": 150,
         "rows": 7847,
         "fields": [
             {
-                "id": "Name",
+                "id": "Адрес",
                 "type": "string",
-                "description": "description"
+                "description": "Адрес"
+            },
+            {
+                "id": "Пароль",
+                "type": "string",
+                "description": "Пароль"
             }
         ]
     },
     {
         "urn": "dataset_4_12345",
-        "title": "Dataset 4",
-        "tags": ["tag1", "tag2"],
+        "title": "Общепиты",
+        "tags": ["Адреса", "Телефоны"],
         "price": 150,
         "rows": 7847,
         "fields": [
             {
-                "id": "Name",
+                "id": "Адрес",
                 "type": "string",
-                "description": "description"
+                "description": "Адрес"
+            },
+            {
+                "id": "Телефон",
+                "type": "string",
+                "description": "Телефон"
+            },
+            {
+                "id": "Качество",
+                "type": "string",
+                "description": "Телефон"
             }
         ]
     },
     {
         "urn": "dataset_5_12345",
-        "title": "Dataset 5",
+        "title": "Парки",
         "tags": [],
         "price": 150,
         "rows": 7847,
         "fields": [
             {
-                "id": "Name",
+                "id": "Адрес",
                 "type": "string",
-                "description": "description"
+                "description": "Адрес"
+            },
+            {
+                "id": "Площадь",
+                "type": "number",
+                "description": "Площадь"
             }
         ]
     }
