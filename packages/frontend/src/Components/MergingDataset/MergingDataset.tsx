@@ -39,6 +39,20 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedF
         setFilters(newArray);
     };
 
+    const deleteFilter = (idx: number) => {
+        const newArray: Array<FilterState | undefined> = [];
+
+        for (let i = 0; i < filters.length; i++) {
+            let ii = i;
+
+            if (ii !== idx) {
+                newArray.push(filters[ii]);
+            }
+        }
+
+        setFilters(newArray);
+    };
+
     return (
         <div className="MergingDataset">
             {!expanded ? (
@@ -95,6 +109,7 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedF
                             filterState={filter!}
                             onChange={(newState) => onChange(newState, index)}
                             key={index}
+                            deleteFilter={() => deleteFilter(index)}
                         />
                     ))}
                     <button className="MergingDataset-add-filter" onClick={addFilter}>
