@@ -8,7 +8,20 @@ import { FieldType } from '../../Pages/MergingPage/MergingPage';
 
 const FilterOptions = ['Filter', 'Range', 'Time', 'Date'];
 
+export interface RangeFilterState {
+    type: 'range';
+    min: number;
+    max: number;
+}
+
+export interface FilterState {
+    fieldId: string;
+    filter: RangeFilterState;
+}
+
 export interface FilterProps {
+    filterState: FilterState;
+    onChange: (newState: FilterState) => void;
     deleteFilter?: () => void;
     fields: Array<FieldType>;
 }
