@@ -31,10 +31,10 @@ const MergingPage: React.FC = () => {
     const [states, setStates] = useState<Array<MergingDatasetState>>(
         datasets.map<MergingDatasetState>((_) => ({
             newFields: [],
+            filters: [],
         })),
     );
     const [fields, setFields] = useState<Array<FieldType>>([emptyField, emptyField]);
-    const [result, setResult] = useState<string>('Financial Advisors Combination');
 
     const [expandedDataset, setExpandedDataset] = useState<string>('');
 

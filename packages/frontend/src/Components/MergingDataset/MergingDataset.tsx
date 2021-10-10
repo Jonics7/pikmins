@@ -12,6 +12,7 @@ import MergingDatasetAddition, { AddRequest, NewFieldType } from './MergingDatas
 
 export interface MergingDatasetState {
     newFields: NewFieldType[];
+    filters: FilterState[];
 }
 
 export interface MergingDatasetProps {
@@ -34,7 +35,6 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({
     expand,
 }) => {
     const [addRequest, setAddRequest] = useState<AddRequest | undefined>();
-    const [filters, setFilters] = useState<Array<FilterState | undefined>>([]);
 
     const addFilter = () => {
         const filter: FilterState = {
@@ -44,31 +44,47 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({
             max: 0,
         };
 
-        setFilters([...filters, filter]);
+        onChange({
+            ...state,
+            filters: [...state.filters, filter],
+        });
     };
 
     const onFilterChange = (newState: FilterState, idx: number) => {
-        const newArray: Array<FilterState | undefined> = [
-            ...filters.slice(0, idx),
+        const newArray: Array<FilterState> = [
+            ...state.filters.slice(0, idx),
             newState,
-            ...filters.slice(idx + 1),
+            ...state.filters.slice(idx + 1),
         ];
 
-        setFilters(newArray);
+        onChange({
+            ...state,
+            filters: newArray,
+        });
     };
 
     const deleteFilter = (idx: number) => {
-        const newArray: Array<FilterState | undefined> = [];
+        const newArray: Array<FilterState> = [];
 
-        for (let i = 0; i < filters.length; i++) {
+        for (let i = 0; i < state.filters.length; i++) {
             let ii = i;
 
             if (ii !== idx) {
-                newArray.push(filters[ii]);
+                newArray.push(state.filters[ii]);
             }
         }
 
-        setFilters(newArray);
+        onChange({
+            ...state,
+            filters: newArray,
+        });
+    };
+
+    const deleteField = (idx: number) => {
+        onChange({
+            ...state,
+            newFields: [...state.newFields.slice(0, idx), ...state.newFields.slice(idx + 1)],
+        });
     };
 
     return (
@@ -121,7 +137,7 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({
                             ) : null}
                         </div>
                     </div>
-                    {filters.map((filter, index) => (
+                    {state.filters.map((filter, index) => (
                         <Filter
                             fields={dataset.fields}
                             filterState={filter!}
@@ -145,14 +161,16 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({
                                     key={field.id}
                                 />
                             ))}
-                            {state.newFields.map((field) => (
+                            {state.newFields.map((field, idx) => (
                                 <DatasetField
                                     onClick={() => onFieldClick(dataset, field)}
                                     selected={selectedFields.every((fieldData) => field.id === fieldData.id)}
                                     name={field.id}
                                     value={field.type}
                                     key={field.id}
-                                    canBeDeleted
+                                    onDelete={() => {
+                                        deleteField(idx);
+                                    }}
                                 />
                             ))}
                             <button
