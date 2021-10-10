@@ -4,14 +4,16 @@ import { ReactComponent as Cross } from '../../Assets/Icons/cross.svg';
 import Range from '../FilterVariants/Range/Range';
 
 import './Filter.scss';
+import { FieldType } from '../../Pages/MergingPage/MergingPage';
 
 const FilterOptions = ['Filter', 'Range', 'Time', 'Date'];
 
 export interface FilterProps {
     deleteFilter?: () => void;
+    fields: Array<FieldType>;
 }
 
-const Filter: React.FC<FilterProps> = ({ deleteFilter }) => {
+const Filter: React.FC<FilterProps> = ({ deleteFilter, fields }) => {
     const [selectedFilter, setSelectedFilter] = useState<string>('');
 
     const showFilter = useCallback(() => {
@@ -27,6 +29,7 @@ const Filter: React.FC<FilterProps> = ({ deleteFilter }) => {
     return (
         <div className="Filter">
             <div className="Filter-info">
+                <Dropdown items={fields.map((field) => field.id)} onItemChange={() => {}} />
                 <Dropdown items={FilterOptions} onItemChange={(filter) => setSelectedFilter(filter)} />
                 {showFilter()}
             </div>
