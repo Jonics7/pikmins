@@ -24,11 +24,9 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedF
     const addFilter = () => {
         const filter: FilterState = {
             fieldId: '',
-            filter: {
-                type: 'range',
-                min: 0,
-                max: 0,
-            },
+            type: 'range',
+            min: 0,
+            max: 0,
         };
 
         setFilters([...filters, filter]);

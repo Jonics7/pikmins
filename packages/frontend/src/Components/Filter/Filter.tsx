@@ -6,7 +6,7 @@ import Range from '../FilterVariants/Range/Range';
 import './Filter.scss';
 import { FieldType } from '../../Pages/MergingPage/MergingPage';
 
-const FilterOptions = ['Filter', 'Range', 'Time', 'Date'];
+const FilterOptions = ['Range'];
 
 export interface RangeFilterState {
     type: 'range';
@@ -15,8 +15,10 @@ export interface RangeFilterState {
 }
 
 export interface FilterState {
-    fieldId: string;
-    filter: RangeFilterState;
+    fieldId?: string;
+    type: 'range';
+    min: number;
+    max: number;
 }
 
 export interface FilterProps {
@@ -26,7 +28,7 @@ export interface FilterProps {
     fields: Array<FieldType>;
 }
 
-const Filter: React.FC<FilterProps> = ({ deleteFilter, fields }) => {
+const Filter: React.FC<FilterProps> = ({ deleteFilter, fields, filterState, onChange }) => {
     const [selectedFilter, setSelectedFilter] = useState<string>('');
 
     const showFilter = useCallback(() => {
@@ -42,8 +44,22 @@ const Filter: React.FC<FilterProps> = ({ deleteFilter, fields }) => {
     return (
         <div className="Filter">
             <div className="Filter-info">
-                <Dropdown items={fields.map((field) => field.id)} onItemChange={() => {}} />
-                <Dropdown items={FilterOptions} onItemChange={(filter) => setSelectedFilter(filter)} />
+                <Dropdown
+                    items={fields.map((field) => field.id)}
+                    onItemChange={(fieldId) => {
+                        onChange({
+                            ...filterState,
+                            fieldId,
+                        });
+                    }}
+                    value={filterState.fieldId}
+                    placeholder="Поле"
+                />
+                <Dropdown
+                    items={FilterOptions}
+                    onItemChange={(filter) => setSelectedFilter(filter)}
+                    placeholder="Фильтр"
+                />
                 {showFilter()}
             </div>
             <Cross className="Filter-delete" onClick={deleteFilter} />

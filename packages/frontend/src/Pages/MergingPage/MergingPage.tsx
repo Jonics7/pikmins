@@ -12,7 +12,7 @@ import { Dataset } from 'common';
 const DropdownItems = ['One To One', 'Many To Many'] as const;
 export type DropdownItemsType = typeof DropdownItems[number];
 
-const SortByItems = ['Sort By', 'Name', 'Country', 'Price'] as const;
+const SortByItems = ['Name', 'Country', 'Price'] as const;
 export type SortByItemsType = typeof SortByItems[number];
 
 export type FieldType = Dataset['fields'][number];
@@ -50,7 +50,7 @@ const MergingPage: React.FC = () => {
                     <div className="MergingPage-header-button">
                         <Minus />
                     </div>
-                    <Dropdown items={SortByItems} onItemChange={(i) => {}} />
+                    <Dropdown items={SortByItems} onItemChange={(i) => {}} placeholder="Сортировка" />
                 </div>
                 <Helper isExpanded handleHelper={() => {}} />
             </div>
@@ -75,7 +75,7 @@ const MergingPage: React.FC = () => {
                         <div className="MergingPage-controls-field">
                             <div className="MergingPage-controls-field-text">{'Select'}</div>
                         </div>
-                        <Dropdown items={DropdownItems} onItemChange={() => {}} />
+                        <Dropdown items={DropdownItems} onItemChange={() => {}} placeholder="Отношение" />
                         <div className="MergingPage-controls-field">
                             <div className="MergingPage-controls-field-text">{'Select'}</div>
                         </div>
