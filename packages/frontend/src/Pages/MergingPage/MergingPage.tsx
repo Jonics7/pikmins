@@ -37,10 +37,23 @@ const MergingPage: React.FC = () => {
     const [fields, setFields] = useState<Array<FieldType>>([emptyField, emptyField]);
 
     const [expandedDataset, setExpandedDataset] = useState<string>('');
+    const [price, setPrice] = useState<number>(1);
 
     const handeFields = (dataset: Dataset, field: FieldType) => {};
 
     const link = () => {};
+
+    const stringToNumber = (text: string) => {
+        const out = text.replace('$', '');
+        setPrice(parseFloat(out));
+    };
+
+    const calculateTotalCost = () => {
+        let cost = 0;
+        datasets.forEach((dataset) => (cost += dataset.price));
+
+        return cost;
+    };
 
     const onChange = (newState: MergingDatasetState, idx: number) => {
         setStates([...states.slice(0, idx), newState, ...states.slice(idx + 1)]);
@@ -51,6 +64,8 @@ const MergingPage: React.FC = () => {
         //     //TODO: do something
         // }
     };
+
+    console.log(price);
 
     return (
         <div className="MergingPage">
@@ -97,8 +112,19 @@ const MergingPage: React.FC = () => {
                             Link
                         </div>
                     </div>
-                    <div className="MergingPage-convert-button" onClick={onSubmit}>
-                        Convert Dataset
+                    <div className="MergingPage-price" onClick={onSubmit}>
+                        <div className="MergingPage-title">Цена</div>
+                        <input
+                            type="text"
+                            className="MergingPage-price-input"
+                            value={`$${price ?? 0}`}
+                            onChange={(e) => stringToNumber(e.target.value)}
+                        />
+                        <div className="MergingPage-price-info">
+                            <div className="MergingPage-price-info-text">Включает в себя датасеты на сумму</div>
+                            <div className="MergingPage-price-info-cost">{calculateTotalCost()}$</div>
+                        </div>
+                        <div className="MergingPage-price-submit">Submit</div>
                     </div>
                 </div>
             </div>

@@ -111,12 +111,12 @@
 
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
+        justify-content: space-between;
     }
 
-    &-controls {
+    &-price {
         width: 100%;
-        height: vw(372);
+        height: calc(50% - #{vw(10)});
         background: #fff;
         border-radius: vw(10);
 
@@ -127,13 +127,83 @@
         justify-content: space-between;
         align-items: center;
 
-        margin-bottom: vw(25);
+        &-input {
+            background: #F4F7FA;
+            border-radius: vw(10);
+
+            color: #89b5f7;
+            font-size: vw(18);
+            line-height: vw(24);
+
+            border: none;
+
+            height: vw(45);
+            width: 100%;
+
+            padding: 0 vw(15);
+            text-align: center;
+
+            &::placeholder {
+                color: #89b5f7;
+                font-size: vw(18);
+                line-height: vw(24);
+            }
+        }
+    
+        &-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            color: #89b5f7;
+
+            &-text {
+                font-size: vw(18);
+                line-height: vw(24);
+            }
+    
+            &-cost {
+                font-size: vw(24);
+                line-height: vw(24);
+            }
+        }
+
+        &-submit {
+            padding: 0 vw(55);
+            color: #fff;
+            background: #89b5f7;
+            height: vw(75);
+            border-radius: vw(10);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            font-weight: 700;
+            font-size: vw(25);
+            line-height: vw(24);            
+        }
+    }
+
+    &-controls {
+        width: 100%;
+        height: calc(50% - #{vw(10)});
+        background: #fff;
+        border-radius: vw(10);
+
+        padding: vw(44) vw(100);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
 
         &-field {
             height: vw(50);
             width: 100%;
             background: #f4f7fa;
-            border-radius: 10px;
+            border-radius: vw(10);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -166,7 +236,6 @@
             line-height: vw(24);
             font-weight: 700;
             padding: vw(12) vw(58);
-            // margin-top: vw(20);
 
             user-select: none;
             cursor: pointer;
