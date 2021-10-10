@@ -84,7 +84,7 @@ const MergingPage: React.FC = () => {
                         value={result}
                     />
                     <div className="MergingPage-controls-button" onClick={onSubmit}>
-                        Convert
+                        Link
                     </div>
                 </div>
             </div>
