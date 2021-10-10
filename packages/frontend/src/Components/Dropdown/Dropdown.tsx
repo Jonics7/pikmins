@@ -26,12 +26,10 @@ function Dropdown<T extends string>({ items, onItemChange }: DropdownProps<T>) {
             <div className={`Dropdown-items${isExpanded ? ' expanded' : ''}`}>
                 {items
                     .filter((item: T) => item !== selected)
-                    .map((item, index) => (
+                    .map((item, index, arr) => (
                         <div className="Dropdown-item" key={index} onClick={() => onItemClick(item)}>
                             {item}
-                            {items.findIndex((value) => value === item) !== items.length - 1 ? (
-                                <div className="Dropdown-line" />
-                            ) : null}
+                            {index !== arr.length - 1 ? <div className="Dropdown-line" /> : null}
                         </div>
                     ))}
             </div>

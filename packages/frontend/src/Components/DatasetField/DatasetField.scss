@@ -6,7 +6,7 @@
 
     margin-right: vw(70);
 
-    border-radius: 10px;
+    border-radius: vw(10s);
 
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@
 
     border-radius: 10px;
 
-    background: #F4F7FA;
+    background: #f4f7fa;
     color: #000;
 
     cursor: pointer;
@@ -25,13 +25,13 @@
 
     &.inactive {
         background: #fff;
-        color: #89B5F7;
+        color: #89b5f7;
     }
 
     &:last-child {
         margin-right: 0;
     }
- 
+
     &-name {
         font-size: vw(18);
         line-height: vw(24);
@@ -51,7 +51,7 @@
     }
 
     &.selected {
-        background: #89B5F7;
+        background: #89b5f7;
         color: #fff;
     }
 }

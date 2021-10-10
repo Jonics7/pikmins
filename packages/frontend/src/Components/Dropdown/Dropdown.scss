@@ -7,8 +7,8 @@
         padding: vw(13) vw(46);
         display: flex;
         align-items: center;
-        border-radius: 10px;
-        background: #89B5F7;
+        border-radius: vw(10);
+        background: #89b5f7;
 
         cursor: pointer;
 
@@ -23,7 +23,7 @@
             user-select: none;
         }
     }
-    
+
     &-arrow {
         height: vw(12);
         width: auto;
@@ -36,9 +36,9 @@
 
         display: none;
 
-        border-radius: 0 0 10px 10px;
+        border-radius: 0 0 vw(10) vw(10);
         width: 100%;
-        background: #89B5F7;
+        background: #89b5f7;
 
         min-height: 0;
 
@@ -47,7 +47,7 @@
         &::before {
             content: '';
             width: 100%;
-            height: 2px;
+            height: 1px;
             background: #fff;
             margin-top: vw(15);
         }
@@ -79,7 +79,7 @@
 
     &-line {
         width: 100%;
-        height: 2px;
+        height: 1px;
         background: #fff;
         margin-top: vw(17);
     }

@@ -79,7 +79,7 @@ const MergingPage: React.FC = () => {
                     <input
                         type="text"
                         className="MergingPage-controls-result"
-                        placeholder="Name"
+                        placeholder="Название"
                         onChange={(e) => setResult(e.target.value)}
                         value={result}
                     />
