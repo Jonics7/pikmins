@@ -32,6 +32,8 @@ const MergingPage: React.FC = () => {
 
     const handeFields = (dataset: Dataset, field: FieldType) => {};
 
+    const link = () => {};
+
     const onSubmit = () => {
         // if (fields.every((field) => field.datasetId !== -1)) {
         //     //TODO: do something
@@ -67,24 +69,22 @@ const MergingPage: React.FC = () => {
                         ))}
                     </div>
                 </div>
-                <div className="MergingPage-controls">
-                    <div className="MergingPage-controls-field">
-                        <div className="MergingPage-controls-field-text">{fields[0].id}</div>
+                <div className="MergingPage-right">
+                    <div className="MergingPage-controls">
+                        <div className="MergingPage-title">Work</div>
+                        <div className="MergingPage-controls-field">
+                            <div className="MergingPage-controls-field-text">{fields[0].id}</div>
+                        </div>
+                        <Dropdown items={DropdownItems} onItemChange={() => {}} />
+                        <div className="MergingPage-controls-field">
+                            <div className="MergingPage-controls-field-text">{fields[1].id}</div>
+                        </div>
+                        <div className="MergingPage-controls-button" onClick={link}>
+                            Link
+                        </div>
                     </div>
-                    <Dropdown items={DropdownItems} onItemChange={() => {}} />
-                    <div className="MergingPage-controls-field">
-                        <div className="MergingPage-controls-field-text">{fields[1].id}</div>
-                    </div>
-                    <Arrow className="MergingPage-controls-arrow" />
-                    <input
-                        type="text"
-                        className="MergingPage-controls-result"
-                        placeholder="Название"
-                        onChange={(e) => setResult(e.target.value)}
-                        value={result}
-                    />
-                    <div className="MergingPage-controls-button" onClick={onSubmit}>
-                        Link
+                    <div className="MergingPage-convert-button" onClick={onSubmit}>
+                        Convert Dataset
                     </div>
                 </div>
             </div>
