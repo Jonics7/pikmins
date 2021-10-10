@@ -46,6 +46,7 @@ const MergingDataset: React.FC<MergingDatasetProps> = ({ onFieldClick, selectedF
                                     name={field.id}
                                     value={field.description ?? ''}
                                     key={index}
+                                    linked="a"
                                 />
                             ))}
                         </div>

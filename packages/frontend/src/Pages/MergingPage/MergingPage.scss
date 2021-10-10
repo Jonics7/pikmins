@@ -105,19 +105,29 @@
         }
     }
 
-    &-controls {
-        height: vw(574);
+    &-right {
         width: vw(580);
         flex: 0 0 vw(580);
-        background: #fff;
-        border-radius: 10px;
 
-        padding: vw(70) vw(100) vw(57) vw(100);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    &-controls {
+        width: 100%;
+        height: vw(372);
+        background: #fff;
+        border-radius: vw(10);
+
+        padding: vw(44) vw(100);
 
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+
+        margin-bottom: vw(25);
 
         &-field {
             height: vw(50);
@@ -133,7 +143,7 @@
             &-text {
                 font-size: vw(18);
                 line-height: vw(24);
-                color: #010101;
+                color: #89b5f7;
 
                 width: max-content;
                 user-select: none;
@@ -145,33 +155,8 @@
             width: auto;
         }
 
-        &-result {
-            height: vw(50);
-            width: 100%;
-            background: #f4f7fa;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: vw(18);
-            line-height: vw(24);
-            font-weight: 500;
-            color: #010101;
-
-            padding: 0 vw(20);
-
-            border: none;
-
-            text-align: center;
-
-            &:focus {
-                outline: none;
-            }
-        }
-
         &-button {
-            border-radius: 10px;
+            border-radius: vw(10);
             background: #89b5f7;
             display: flex;
             align-items: center;
@@ -181,10 +166,35 @@
             line-height: vw(24);
             font-weight: 700;
             padding: vw(12) vw(58);
-            margin-top: vw(20);
+            // margin-top: vw(20);
 
             user-select: none;
             cursor: pointer;
         }
+    }
+
+    &-title {
+        color: #89b5f7;
+        font-size: vw(24);
+        line-height: vw(24);
+        font-weight: 700;
+    }
+
+    &-convert-button {
+        border-radius: vw(10);
+        background: #89b5f7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: vw(25);
+        line-height: vw(24);
+        font-weight: 700;
+        padding: 0 vw(80);
+
+        height: vw(75);
+
+        user-select: none;
+        cursor: pointer;
     }
 }

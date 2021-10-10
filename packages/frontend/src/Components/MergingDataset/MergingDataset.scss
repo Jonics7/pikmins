@@ -117,6 +117,7 @@
         flex-direction: row;
 
         overflow-x: auto;
+        // z-index: 150;
 
         &::-webkit-scrollbar {
             display: none;
@@ -124,7 +125,7 @@
 
         &-holder {
             width: vw(480);
-            overflow: hidden;
+            // overflow: hidden;
         }
 
         &-bottom-holder {
